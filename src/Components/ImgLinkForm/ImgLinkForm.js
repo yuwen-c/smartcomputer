@@ -4,7 +4,7 @@ import './ImgLinkForm.css';
 const ImgLinkForm = () => {
     return (
         <div className="pa2-l">
-            <form className="bg-washed-green mw7 center pa4 br2-ns ba b--black-10">
+            <form className="mw7 center pa4 br2-ns ba b--black-10">
                 {/* <fieldset className="cf bn ma0 pa0"> */}
                 <legend className="center pa0 f3 fw4 mb3 black-80 ">Face recognition</legend>
                 <div className="cf">

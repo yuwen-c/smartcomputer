@@ -9,5 +9,15 @@
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: -1  
+  z-index: 1  
+  /* z-index need to be 1 to get interactivity. if -1, onHover doesn't work */
 } 
+/* .App:not(.particlesClass){
+  z-index: 1;
+} */
+
+/* 好像無法抓到form component */
+/* .formCla{
+  position: absolute;
+  z-index: 2;
+} */

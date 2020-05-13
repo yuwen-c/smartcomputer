@@ -1,0 +1,5 @@
+img {
+    position: relative;
+    z-index: 2;
+    /* set z-index: 2 > particles z-index: 1, shows on the top layer */
+}

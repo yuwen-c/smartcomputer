@@ -6,6 +6,7 @@ import Logo from './Components/Logo/Logo';
 import UserLogIn from './Components/UserLogin/UserLogIn';
 import ImgLinkForm from './Components/ImgLinkForm/ImgLinkForm';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
+import { Background } from 'tsparticles/dist/Options/Classes/Background/Background';
 
 const particlesSetting = {
   particles: {
