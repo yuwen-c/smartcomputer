@@ -9,6 +9,12 @@ import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import {ParticlesSetting} from './Components/ParticlesSetting';
 
 class App extends Component{
+  constructor(){
+    super();
+    this.state = {
+      input : ''
+    }
+  }
 
   render(){
     return (

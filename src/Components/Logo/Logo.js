@@ -1,10 +1,11 @@
 import React from 'react';
 import Tilt from 'react-tilt'
 import faceLogo from './facial_recognition.png';
+import './Logo.css';
 
 const Logo = () => {
     return(
-        <Tilt className="Tilt h4 w4 ml3" options={{ max : 60 }}  >
+        <Tilt className="logoClass Tilt h4 w4 ml3" options={{ max : 60 }}  >
             <div className="Tilt-inner">  
                 <img src={faceLogo} />
             </div>
