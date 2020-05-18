@@ -7,7 +7,7 @@ const Logo = () => {
     return(
         <Tilt className="logoClass Tilt h4 w4 ml3" options={{ max : 60 }}  >
             <div className="Tilt-inner">  
-                <img src={faceLogo} />
+                <img src={faceLogo} alt=''/>
             </div>
         {/* icon attibute */}
         {/* Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> */}
