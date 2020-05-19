@@ -1,13 +1,22 @@
 import React from 'react';
-// import './FaceRecognition.css'
+import './FaceRecognition.css'
 
-const FaceRecognition = ({Pimg}) => {
+const FaceRecognition = ({Pimg, PfaceRegion}) => {
     return(
-        <div className='flex flex-column'>
-            <p className=" f3-m f3-l measure lh-title mt0 center">
-                Janet Jackson says Hi to you.</p>
-            <img id='imgID' className="w-70 dib measure f3 center mb3" 
-            src={Pimg}  alt=""/>
+        // flex-column: column layouts with <p> and child <div>
+        <div className='flex flex-column ma mb2'>
+            <p className="f4">Janet Jackson says Hi to you.</p>
+            {/* justify-center: put child <div> in the middle */}
+            <div className='flex justify-center'>
+                <div className='mt2 relative'>
+                    <img id='imgID' className="" width='500px' height='auto'
+                    src={Pimg}  alt=""/>              
+                    <div 
+                    className='faceRegionClass' 
+                    style={PfaceRegion}></div>
+                    {/* PfaceRegion is an style object */}
+                </div>
+            </div>
         </div>
     )    
 }

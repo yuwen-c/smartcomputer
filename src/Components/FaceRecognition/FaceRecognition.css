@@ -1,5 +1,15 @@
 img {
-    position: relative;
-    z-index: 2;
+    /* position: absolute;  */
+    /* z-index: 2;  */
     /* set z-index: 2 > particles z-index: 1, shows on the top layer */
+}
+
+
+.faceRegionClass {
+    position: absolute;
+    box-shadow: 0 0 0 3px #149df2 inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
 }

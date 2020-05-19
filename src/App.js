@@ -27,7 +27,6 @@ class App extends Component{
       this.setState({input: event.target.value})
   }
   
-  // face detection url: https://samples.clarifai.com/face-det.jpg
   // detect user click submit button
   onButtonClick = () => {
     this.setState({imgUrl : this.state.input})
@@ -42,6 +41,37 @@ class App extends Component{
       console.log(err);
     });
   }
+
+  // face detection url: 
+  // https://samples.clarifai.com/face-det.jpg
+  // {top_row: 0.30901453, left_col: 0.21245633, bottom_row: 0.47755477, right_col: 0.30410764}
+  //   bottom_row: 0.47755477
+  //   left_col: 0.21245633
+  //   right_col: 0.30410764
+  //   top_row: 0.30901453
+  // 取得的bounding box裡面的數字，是%。
+
+  grabFaceFun = (data) => {
+    const regionData = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const imgEle = document.getElementById("imgID");
+    const imgHeight = imgEle.height; //480 圖片長寬
+    const imgWidth = imgEle.width; //720
+    // get four sides of face region
+    console.log(imgHeight* regionData.top_row,imgHeight* regionData.bottom_row,imgWidth* regionData.left_col,imgWidth* regionData.right_col)
+    this.setState({faceRegion: {
+      //數字越大，就離那一邊越遠
+      top: imgHeight* regionData.top_row,
+      bottom: imgHeight- (regionData.bottom_row* imgHeight),
+      left: imgWidth* regionData.left_col,
+      right: imgWidth- (regionData.right_col* imgWidth)
+    }})
+
+
+    // // size of the square
+    // const squareHeight = bot - top;
+    // const squareWidth = rig - lef;
+
+  }  
 
 
 
@@ -58,7 +88,8 @@ class App extends Component{
         PonInputChange={this.onInputChange} 
         PonButtonClick={this.onButtonClick} />
         <FaceRecognition
-        Pimg={this.state.imgUrl}/>
+        Pimg={this.state.imgUrl}
+        PfaceRegion={this.state.faceRegion}/>
       </div>
     )
   }
