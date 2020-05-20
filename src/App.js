@@ -8,6 +8,7 @@ import ImgLinkForm from './Components/ImgLinkForm/ImgLinkForm';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import {ParticlesSetting} from './Components/ParticlesSetting';
 import Clarifai from 'clarifai';
+import SignIn from './Components/SignIn/SignIn';
 //const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({apiKey: '39549cfbc39a4a6d8c78bd943cd62036'});
@@ -21,7 +22,8 @@ class App extends Component{
       // add imgurl state so that the image shows after click the button
       // if use input state instead, image shows right after input url
       faceRegion:{},
-      faceRegions : [] //multiple faces
+      faceRegions : [], //multiple faces,
+      route: ''
     }
   }
   // detect user input
@@ -67,9 +69,7 @@ class App extends Component{
         right: imgWidth- (item.right_col* imgWidth)
       }
     })
-    this.setState({faceRegions: regionArr});
-
-    
+    this.setState({faceRegions: regionArr});   
 // one person version, faceRegion is an object with one set of number
     // this.setState({faceRegion: {
     //   top: imgHeight* regionData.top_row,
@@ -79,6 +79,11 @@ class App extends Component{
     // }})
   }  
 
+  onRouteChange = () => {
+    console.log("onRouteChange")
+    this.setState({route: 'home'})
+  }
+
   render(){
     return (
       <div className="App">
@@ -86,15 +91,21 @@ class App extends Component{
         params={ParticlesSetting}
         />
         <Navigation/>
-        <Logo/>
-        <UserLogIn/>
-        <ImgLinkForm 
-        PonInputChange={this.onInputChange} 
-        PonButtonClick={this.onButtonClick} />
-        <FaceRecognition
-        Pimg={this.state.imgUrl}
-        // PfaceRegion={this.state.faceRegion}
-        PfaceRegions={this.state.faceRegions}/>
+        {
+          this.state.route === 'home' ? 
+          <div>
+            <Logo/>
+            <UserLogIn/>
+            <ImgLinkForm 
+            PonInputChange={this.onInputChange} 
+            PonButtonClick={this.onButtonClick} />
+            <FaceRecognition
+            Pimg={this.state.imgUrl}
+            // PfaceRegion={this.state.faceRegion}
+            PfaceRegions={this.state.faceRegions}/>
+          </div>
+          : <SignIn PonRouteChange={this.onRouteChange}/>
+        }
       </div>
     )
   }
