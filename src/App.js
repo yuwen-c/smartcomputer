@@ -18,26 +18,10 @@ class App extends Component{
     this.state = {
       input : '',
       imgUrl : '',
-// 如果只設input, 把圖片用this.state.input傳到畫面的component，會一輸入就出現，違反直覺
+      // add imgurl state so that the image shows after click the button
+      // if use input state instead, image shows right after input url
       faceRegion:{},
-      faceRegions : [ //multiple faces
-        {
-          smallRegion: {
-            top: 1,
-            bottom: 2,
-            right: 3,
-            left:4
-          }
-        },
-        {
-          smallRegion: {
-            top: 1,
-            bottom: 2,
-            right: 3,
-            left:4
-          }
-        }
-      ]
+      faceRegions : [] //multiple faces
     }
   }
   // detect user input
@@ -54,7 +38,7 @@ class App extends Component{
     .then(response => {      
       // call grabFaceFun & pass region data
       this.grabFaceFun(response);
-    }) //已取得人臉區域。但是要解決多張人臉問題。
+    }) 
     .catch(err => {
       console.log(err);
     });
@@ -65,29 +49,27 @@ class App extends Component{
     const regionDatas = data.outputs[0].data.regions.map(item => {
       return item.region_info.bounding_box;
     })
-    console.log("grabFaceFun-regionDatas", regionDatas); //[{},{},{}]
-    // [{top_row: 0.30901453, left_col: 0.21245633, bottom_row: 0.47755477, right_col: 0.30410764},
-    // {},{}]
+    // console.log("grabFaceFun-regionDatas", regionDatas); //[{},{},{}]
+    
+    // step 1: grad the first face only
     // const regionData = data.outputs[0].data.regions[0].region_info.bounding_box;
+
     const imgEle = document.getElementById("imgID"); //get the url image
     const imgHeight = imgEle.height; //height of image
     const imgWidth = imgEle.width; //width of image
-    // get four sides of face region
-    //先拆解邊長，再setState
-    // write an object
-    const regionObject = {};
-    regionDatas.forEach((item, index) => {
-      regionObject[index] = {
+    
+    // get four sides of face regions then set to faceRegions state
+    const regionArr = regionDatas.map((item, index) => {
+      return {
         top: imgHeight* item.top_row,
         bottom: imgHeight- (item.bottom_row* imgHeight),
         left: imgWidth* item.left_col,
         right: imgWidth- (item.right_col* imgWidth)
       }
     })
+    this.setState({faceRegions: regionArr});
+
     
-    //好像還是把資料塞進array比較對？？
-    this.setState({faceRegions: Object.values(regionObject)});
-  //console.log("grabFaceFun-regionObject把多筆資料塞obj", regionObject);
 // one person version, faceRegion is an object with one set of number
     // this.setState({faceRegion: {
     //   top: imgHeight* regionData.top_row,
