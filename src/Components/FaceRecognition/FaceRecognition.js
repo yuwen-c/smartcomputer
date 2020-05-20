@@ -1,7 +1,9 @@
 import React from 'react';
 import './FaceRecognition.css'
 
-const FaceRecognition = ({Pimg, PfaceRegion}) => {
+const FaceRecognition = ({Pimg, PfaceRegion, PfaceRegions}) => {
+    console.log("FaceRecognition-PfaceRegion:",PfaceRegion);
+    console.log("FaceRecognition-PfaceRegions:",PfaceRegions);
     return(
         // flex-column: column layouts with <p> and child <div>
         <div className='flex flex-column ma mb2'>
@@ -11,10 +13,30 @@ const FaceRecognition = ({Pimg, PfaceRegion}) => {
                 <div className='mt2 relative'>
                     <img id='imgID' className="" width='500px' height='auto'
                     src={Pimg}  alt=""/>              
-                    <div 
-                    className='faceRegionClass' 
-                    style={PfaceRegion}></div>
                     {/* PfaceRegion is an style object */}
+                    {
+                        PfaceRegions.map((item, index) => {
+                            return (
+                                <div 
+                                        className='faceRegionClass' 
+                                        style={item}></div>
+                            )
+                        })
+                    }
+
+
+                    {
+                    // Object.entries(PfaceRegion).map((item, index) => {
+                    //     return (
+                    //         <div 
+                    //         key='index' 
+                    //         className='faceRegionClass' 
+                    //         style={item}>
+                    //         </div> 
+                    //     )
+                    // })
+                    }
+
                 </div>
             </div>
         </div>
