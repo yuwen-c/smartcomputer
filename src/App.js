@@ -9,6 +9,7 @@ import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import {ParticlesSetting} from './Components/ParticlesSetting';
 import Clarifai from 'clarifai';
 import SignIn from './Components/SignIn/SignIn';
+import Register from './Components/Register/Register';
 //const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({apiKey: '39549cfbc39a4a6d8c78bd943cd62036'});
@@ -23,7 +24,7 @@ class App extends Component{
       // if use input state instead, image shows right after input url
       faceRegion:{},
       faceRegions : [], //multiple faces,
-      route: ''
+      route: 'signIn'
     }
   }
   // detect user input
@@ -79,9 +80,9 @@ class App extends Component{
     // }})
   }  
 
-  onRouteChange = () => {
-    console.log("onRouteChange")
-    this.setState({route: 'home'})
+  onRouteChange = (route) => {
+
+    this.setState({route: route})
   }
 
   render(){
@@ -91,8 +92,10 @@ class App extends Component{
         params={ParticlesSetting}
         />
         <Navigation/>
+
         {
-          this.state.route === 'home' ? 
+          this.state.route === 'home' 
+          ? 
           <div>
             <Logo/>
             <UserLogIn/>
@@ -104,7 +107,12 @@ class App extends Component{
             // PfaceRegion={this.state.faceRegion}
             PfaceRegions={this.state.faceRegions}/>
           </div>
-          : <SignIn PonRouteChange={this.onRouteChange}/>
+          : 
+            this.state.route === 'signIn' 
+            ?         
+            <SignIn PonRouteChange={this.onRouteChange}/>
+            : 
+            <Register PonRouteChange={this.onRouteChange}/>
         }
       </div>
     )

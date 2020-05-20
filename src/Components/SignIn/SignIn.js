@@ -6,9 +6,9 @@ const SignIn = ({PonRouteChange}) => {
             <main className="pa4 black-80">
                 <form className="measure">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                    <legend className="f3 fw6 ph0 mh0">Sign In</legend>
+                    <legend className="f2 fw6 ph0 mh0">Sign In</legend>
                     <div className="mt3">
-                        <label className="db fw6 lh-copy f6" for="email-address">name</label>
+                        <label className="db fw6 lh-copy f6" for="email-address">Name</label>
                         <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="name" name="name"  id="name"/>
                     </div>
@@ -20,13 +20,15 @@ const SignIn = ({PonRouteChange}) => {
                     </fieldset>
                     <div className="">
                     <input 
-                    onClick={PonRouteChange}
+                    onClick={() => PonRouteChange('home')}
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                     type="submit" 
                     value="Sign in"/>
                     </div>
                     <div className="lh-copy mt3">
-                    <a href="#0" className="f6 link dim black db">Register</a>
+                    <div 
+                    onClick={() => PonRouteChange('register')}
+                    className="f5 link dim black db pointer">Register</div>
                     </div>
                 </form>
             </main>

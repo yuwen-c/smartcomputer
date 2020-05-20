@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Register = () => {
+const Register = ({PonRouteChange}) => {
     return (
         <article class="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
             <main className="pa4 black-80">
                 <form className="measure">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                    <legend className="f3 fw6 ph0 mh0">Register</legend>
+                    <legend className="f2 fw6 ph0 mh0">Register</legend>
                     <div className="mt3">
-                        <label className="db fw6 lh-copy f6" for="email-address">name</label>
+                        <label className="db fw6 lh-copy f6" for="email-address">Name</label>
                         <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                         type="name" name="name"  id="name"/>
                     </div>
@@ -20,14 +20,14 @@ const Register = () => {
                     </fieldset>
                     <div className="">
                     <input 
-                    onClick={PonRouteChange}
+                    onClick={() => PonRouteChange('home')}
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                     type="submit" 
-                    value="Sign in"/>
+                    value="Register"/>
                     </div>
-                    <div className="lh-copy mt3">
+                    {/* <div className="lh-copy mt3">
                     <a href="#0" className="f6 link dim black db">Register</a>
-                    </div>
+                    </div> */}
                 </form>
             </main>
         </article>
