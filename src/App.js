@@ -92,17 +92,18 @@ class App extends Component{
   }
 
   render(){
+    const {isSignedIn, route, imgUrl, faceRegions} = this.state;
     return (
       <div className="App">
         <Particles className='particlesClass'
         params={ParticlesSetting}
         />
         <Navigation
-        PisSignedIn={this.state.isSignedIn}
+        PisSignedIn={isSignedIn}
         PonRouteChange={this.onRouteChange}/>
         {/* 3 conditions of route state decide to show what page */}
         {
-          this.state.route === 'home' 
+          route === 'home' 
           ? 
           <div>
             <Logo/>
@@ -111,12 +112,12 @@ class App extends Component{
             PonInputChange={this.onInputChange} 
             PonButtonClick={this.onButtonClick} />
             <FaceRecognition
-            Pimg={this.state.imgUrl}
+            Pimg={imgUrl}
             // PfaceRegion={this.state.faceRegion} // single face version
-            PfaceRegions={this.state.faceRegions}/>
+            PfaceRegions={faceRegions}/>
           </div>
           : 
-            this.state.route === 'signIn' 
+            route === 'signIn' 
             ?         
             <SignIn PonRouteChange={this.onRouteChange}/>
             : 
