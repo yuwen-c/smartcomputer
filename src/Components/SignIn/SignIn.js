@@ -20,6 +20,7 @@ const SignIn = ({PonRouteChange}) => {
                     </fieldset>
                     <div className="">
                     <input 
+                    // connect to home page
                     onClick={() => PonRouteChange('home')}
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                     type="submit" 
@@ -27,6 +28,7 @@ const SignIn = ({PonRouteChange}) => {
                     </div>
                     <div className="lh-copy mt3">
                     <div 
+                    // connect to register page
                     onClick={() => PonRouteChange('register')}
                     className="f5 link dim black db pointer">Register</div>
                     </div>

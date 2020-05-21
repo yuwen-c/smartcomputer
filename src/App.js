@@ -24,7 +24,8 @@ class App extends Component{
       // if use input state instead, image shows right after input url
       faceRegion:{},
       faceRegions : [], //multiple faces,
-      route: 'signIn'
+      route: 'signIn', // 'home', 'register', 'signIn' 
+      isSignedIn: false 
     }
   }
   // detect user input
@@ -81,7 +82,12 @@ class App extends Component{
   }  
 
   onRouteChange = (route) => {
-
+    if(route === 'home'){
+      this.setState({isSignedIn: true})
+    } 
+    else if(route === 'signIn'){
+      this.setState({isSignedIn: false})
+    }
     this.setState({route: route})
   }
 
@@ -91,8 +97,10 @@ class App extends Component{
         <Particles className='particlesClass'
         params={ParticlesSetting}
         />
-        <Navigation/>
-
+        <Navigation
+        PisSignedIn={this.state.isSignedIn}
+        PonRouteChange={this.onRouteChange}/>
+        {/* 3 conditions of route state decide to show what page */}
         {
           this.state.route === 'home' 
           ? 
@@ -104,7 +112,7 @@ class App extends Component{
             PonButtonClick={this.onButtonClick} />
             <FaceRecognition
             Pimg={this.state.imgUrl}
-            // PfaceRegion={this.state.faceRegion}
+            // PfaceRegion={this.state.faceRegion} // single face version
             PfaceRegions={this.state.faceRegions}/>
           </div>
           : 
