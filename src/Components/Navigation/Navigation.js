@@ -2,8 +2,9 @@ import React from 'react';
 import './Navigation.css';
 
 const Navigation = ({PisSignedIn, PonRouteChange}) => {
-    console.log(PisSignedIn) //false
-    console.log({PisSignedIn}) //{PisSignedIn: false}
+    //console.log(PisSignedIn) //false
+    //console.log({PisSignedIn}) //{PisSignedIn: false}
+    
     // isSignedIn true: home page, sign out
     if(PisSignedIn){
         return(
