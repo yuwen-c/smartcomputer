@@ -1,7 +1,7 @@
 import React from 'react';
 import './ImgLinkForm.css';
 
-const ImgLinkForm = ({PonInputChange, PonButtonClick}) => {
+const ImgLinkForm = ({PonInputChange, PonImageClick}) => {
     return (
         <div className="pa2-l">
             <div className="formClass mw7 center pa4 br2-ns ba b--black-10">
@@ -15,7 +15,7 @@ const ImgLinkForm = ({PonInputChange, PonButtonClick}) => {
                     bg-animate bg-black-70 hover-bg-black white pointer 
                     w-100 w-25-m w-20-l br2-ns br--right-ns" 
                     type="submit" value="Detect Now"
-                    onClick={PonButtonClick}/>
+                    onClick={PonImageClick}/>
                 </div>
             </div>
         </div>

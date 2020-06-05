@@ -12,6 +12,7 @@ import SignIn from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
 //const Clarifai = require('clarifai');
 
+
 const app = new Clarifai.App({apiKey: '39549cfbc39a4a6d8c78bd943cd62036'});
 
 class App extends Component{
@@ -25,19 +26,29 @@ class App extends Component{
       faceRegion:{},
       faceRegions : [], //multiple faces,
       route: 'signIn', // 'home', 'register', 'signIn' 
-      isSignedIn: false 
+      isSignedIn: false, 
+      user:{
+        id:'',
+        name:'',
+        email:'',
+        password:'',
+        entries:'',
+        date:''
+      }
     }
   }
+
   // detect user input
   onInputChange = (event) => {
       this.setState({input: event.target.value})
   }
-  
-  // detect user click submit button
-  onButtonClick = () => {
-    this.setState({imgUrl : this.state.input})
-    // Predict the contents of an image by passing in a URL.
-    //face_detect_Model
+  // user click to send an url:
+  // 1. show image on the screen
+  // 2. send fetch to clarifai to do face detection
+  // 3. another fetch to increase the entries of user, and get the current entries back.
+  onImageClick = () => {
+    this.setState({imgUrl : this.state.input});
+    //face_detect_Model from Clarifai
     app.models.predict("a403429f2ddf4b49b307e318f00e528b", this.state.input)
     .then(response => {      
       // call grabFaceFun & pass region data
@@ -46,9 +57,19 @@ class App extends Component{
     .catch(err => {
       console.log(err);
     });
+    fetch('http://localhost:3000/put/125', {
+      method: 'put',
+      headers: {'Contend-Type': 'application/json'},
+    }).then(response => response.json())
+    .then(data => 
+      // this.setState({entries: data})  // 無法寫user.entries在setstate裡面
+      console.log(this.state.user.entries)
+      );
+
   }
 
   grabFaceFun = (data) => {
+    console.log('grabFaceFun')
     //multiple faces:
     const regionDatas = data.outputs[0].data.regions.map(item => {
       return item.region_info.bounding_box;
@@ -91,6 +112,11 @@ class App extends Component{
     this.setState({route: route})
   }
 
+  // after regieter, load user data to main page.
+  loadUserFromServer = (user) => {
+    this.setState({user: user}); //ok
+  } 
+
   render(){
     const {isSignedIn, route, imgUrl, faceRegions} = this.state;
     return (
@@ -107,10 +133,11 @@ class App extends Component{
           ? 
           <div>
             <Logo/>
-            <UserLogIn/>
+            <UserLogIn
+            PUser={this.state.user}/>
             <ImgLinkForm 
             PonInputChange={this.onInputChange} 
-            PonButtonClick={this.onButtonClick} />
+            PonImageClick={this.onImageClick} />
             <FaceRecognition
             Pimg={imgUrl}
             // PfaceRegion={this.state.faceRegion} // single face version
@@ -119,9 +146,13 @@ class App extends Component{
           : 
             route === 'signIn' 
             ?         
-            <SignIn PonRouteChange={this.onRouteChange}/>
+            <SignIn 
+            PonRouteChange={this.onRouteChange}
+            PloadUserFromServer={this.loadUserFromServer}/>
             : 
-            <Register PonRouteChange={this.onRouteChange}/>
+            <Register 
+            PonRouteChange={this.onRouteChange}
+            PloadUserFromServer={this.loadUserFromServer}/>
         }
       </div>
     )
