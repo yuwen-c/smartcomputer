@@ -27,12 +27,12 @@ class SignIn extends React.Component{
             })
         })
         .then(response => response.json())
-        .then(result => {
-            if(result === 'success'){
+        .then(result => {  // get user from server
+            if(result.id){
                 this.props.PonRouteChange('home');
-                // this.props.PloadUserFromServer(result); // since the result is success, cannot get user??
+                this.props.PloadUserFromServer(result); // update mainpage data
             }else{
-                
+                console.log(result);
             }
         })
     }

@@ -28,7 +28,7 @@ class App extends Component{
       route: 'signIn', // 'home', 'register', 'signIn' 
       isSignedIn: false, 
       user:{
-        id:'',
+        id: 0,
         name:'',
         email:'',
         password:'',
@@ -50,26 +50,34 @@ class App extends Component{
     this.setState({imgUrl : this.state.input});
     //face_detect_Model from Clarifai
     app.models.predict("a403429f2ddf4b49b307e318f00e528b", this.state.input)
-    .then(response => {      
+    .then(response => {     
+      if(response){
       // call grabFaceFun & pass region data
-      this.grabFaceFun(response);
+        this.grabFaceFun(response);
+        fetch('http://localhost:3000/image', {
+          method: 'put',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(this.state.user)
+        })
+        .then(response =>response.json())
+        .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
+      }      
+      // this.setState({users:{ entries: data }})
+      // will setState the whole user object, so we lose user name in the screen.
+
+      // another way to setState
+      // this.setState(prevState => {
+      //   let user = Object.assign({}, prevState.user);  // creating copy of state variable user
+      //   user.entries = 'new count';                     // update the entries property, assign a new value                 
+      //   return { user };                                 // return new object user object
+      // })
     }) 
     .catch(err => {
       console.log(err);
     });
-    fetch('http://localhost:3000/put/125', {
-      method: 'put',
-      headers: {'Contend-Type': 'application/json'},
-    }).then(response => response.json())
-    .then(data => 
-      // this.setState({entries: data})  // 無法寫user.entries在setstate裡面
-      console.log(this.state.user.entries)
-      );
-
   }
 
   grabFaceFun = (data) => {
-    console.log('grabFaceFun')
     //multiple faces:
     const regionDatas = data.outputs[0].data.regions.map(item => {
       return item.region_info.bounding_box;
@@ -112,9 +120,9 @@ class App extends Component{
     this.setState({route: route})
   }
 
-  // after regieter, load user data to main page.
+  // load user data to main page.
   loadUserFromServer = (user) => {
-    this.setState({user: user}); //ok
+    this.setState({user: user}); 
   } 
 
   render(){
@@ -134,7 +142,8 @@ class App extends Component{
           <div>
             <Logo/>
             <UserLogIn
-            PUser={this.state.user}/>
+            PUser={this.state.user}
+            Pentries={this.state.user.entries}/>
             <ImgLinkForm 
             PonInputChange={this.onInputChange} 
             PonImageClick={this.onImageClick} />

@@ -27,14 +27,15 @@ class Register extends React.Component {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(
-                this.state
+                this.state  // 可以用直接object
             )
         })
         .then(response => response.json())
         .then(data => {
+          //  console.log('register', data) // ok有抓到
             this.props.PonRouteChange('home'); // direct to mainpage
             this.props.PloadUserFromServer(data); // call parent function to setState the parent state ****
-        })
+        }) 
     }
 
     render(){
