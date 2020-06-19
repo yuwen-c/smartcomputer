@@ -18,6 +18,8 @@ class SignIn extends React.Component{
     }
 
     onClickSignIn = () => {
+        // prevent an empty input sign in
+        if(this.state.email || this.state.password){
         fetch('http://localhost:3000/signin', {
             method: 'post', 
             headers: {'Content-Type': 'application/json'},
@@ -29,12 +31,17 @@ class SignIn extends React.Component{
         .then(response => response.json())
         .then(result => {  // get user from server
             if(result.id){
+                console.log(result, result.id)
                 this.props.PonRouteChange('home');
                 this.props.PloadUserFromServer(result); // update mainpage data
             }else{
                 console.log(result);
             }
         })
+       }
+        else{
+            console.log('please enter email & password')
+        }
     }
 
     render(){
@@ -49,7 +56,7 @@ class SignIn extends React.Component{
                             <input 
                             onChange={this.onEmailChange}
                             className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                            type="email" name="email"  id="email"/>
+                            type="email" name="email"  id="email" />
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
