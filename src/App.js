@@ -15,27 +15,30 @@ import Register from './Components/Register/Register';
 
 const app = new Clarifai.App({apiKey: '39549cfbc39a4a6d8c78bd943cd62036'});
 
+
+const initialState = {
+  input : '',
+  imgUrl : '',
+  // add imgurl state so that the image shows after click the button
+  // if use input state instead, image shows right after input url
+  faceRegion:{},
+  faceRegions : [], //multiple faces,
+  route: 'signIn', // 'home', 'register', 'signIn' 
+  isSignedIn: false, 
+  user:{
+    id: 0,
+    name:'',
+    email:'',
+    password:'',
+    entries:'',
+    joined:''
+  }
+}
+
 class App extends Component{
   constructor(){
     super();
-    this.state = {
-      input : '',
-      imgUrl : '',
-      // add imgurl state so that the image shows after click the button
-      // if use input state instead, image shows right after input url
-      faceRegion:{},
-      faceRegions : [], //multiple faces,
-      route: 'signIn', // 'home', 'register', 'signIn' 
-      isSignedIn: false, 
-      user:{
-        id: 0,
-        name:'',
-        email:'',
-        password:'',
-        entries:'',
-        date:''
-      }
-    }
+    this.state = initialState;
   }
 
   // detect user input
@@ -115,7 +118,9 @@ class App extends Component{
       this.setState({isSignedIn: true})
     } 
     else if(route === 'signIn'){
-      this.setState({isSignedIn: false})
+      // this.setState({isSignedIn: false})
+      // refresh the initialState when user sign out
+      this.setState(initialState)
     }
     this.setState({route: route})
   }
