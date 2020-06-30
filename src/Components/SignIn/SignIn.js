@@ -10,15 +10,12 @@ class SignIn extends React.Component{
         }
     }
 
-    onEmailChange = (event) => {
-        this.setState({email: event.target.value})
-    }
-
-    onPasswordChange = (event) => {
-        this.setState({password: event.target.value})
+    setInputState = (stateName, newState) => {
+        this.setState({[stateName]: newState})
     }
 
     onClickSignIn = () => {
+        console.log("email, pw", this.state.email, this.state.password)
         // prevent an empty input sign in
         if(this.state.email || this.state.password){
         fetch('http://localhost:3000/signin', {
@@ -53,8 +50,11 @@ class SignIn extends React.Component{
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="f2 fw6 ph0 mh0">Sign In</legend>
                         <FormBase
-                        PonEmailChange={this.onEmailChange}
-                        PonPasswordChange={this.onPasswordChange}/>
+                        Proute={this.props.Proute}
+                        PsetInputState={this.setInputState}
+                        // PonEmailChange={this.onEmailChange}
+                        // PonPasswordChange={this.onPasswordChange}
+                        />
                         </fieldset>
                         <div className="">
                         <input 
