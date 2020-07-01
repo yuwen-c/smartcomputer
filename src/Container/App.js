@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import Particles from 'react-particles-js';
-import Navigation from './Components/Navigation/Navigation';
-import Logo from './Components/Logo/Logo';
-import UserLogIn from './Components/UserLogin/UserLogIn';
-import ImgLinkForm from './Components/ImgLinkForm/ImgLinkForm';
-import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
-import {ParticlesSetting} from './Components/ParticlesSetting';
+import Navigation from '../Components/Navigation/Navigation';
+import Logo from '../Components/Logo/Logo';
+import UserLogIn from '../Components/UserLogin/UserLogIn';
+import ImgLinkForm from '../Components/ImgLinkForm/ImgLinkForm';
+import FaceRecognition from '../Components/FaceRecognition/FaceRecognition';
+import {ParticlesSetting} from '../Components/ParticlesSetting';
 import Clarifai from 'clarifai';
-import SignIn from './Components/SignIn/SignIn';
-import Register from './Components/Register/Register';
+import SignIn from '../Components/SignIn/SignIn';
+import Register from '../Components/Register/Register';
 //const Clarifai = require('clarifai');
 
 
@@ -64,6 +64,7 @@ class App extends Component{
         })
         .then(response =>response.json())
         .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
+        .catch(console.log)
       }      
       // this.setState({users:{ entries: data }})
       // will setState the whole user object, so we lose user name in the screen.

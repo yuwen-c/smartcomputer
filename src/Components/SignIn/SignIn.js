@@ -1,5 +1,5 @@
 import React from 'react';
-import FormBase from '../../Components/FormBase';
+import FormBase from '../FormBase/FormBase';
 
 class SignIn extends React.Component{
     constructor(props){
@@ -36,6 +36,7 @@ class SignIn extends React.Component{
                 console.log(result);
             }
         })
+        .catch(console.log)
        }
         else{
             console.log('please enter email & password')

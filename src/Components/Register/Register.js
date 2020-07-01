@@ -1,5 +1,5 @@
 import React from 'react';
-import FormBase from '../FormBase.js';
+import FormBase from '../FormBase/FormBase.js';
 
 class Register extends React.Component {
     constructor(){
@@ -29,6 +29,7 @@ class Register extends React.Component {
             this.props.PonRouteChange('home'); // direct to mainpage
             this.props.PloadUserFromServer(data); // call parent function to setState the parent state ****
         }) 
+        .catch(console.log)
     }
 
     render(){
