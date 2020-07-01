@@ -10,9 +10,9 @@ class Register extends React.Component {
             password:''
         }
     }
-
+    // when input onchange is triggered, set state of register
     setInputState = (stateName, newState) => {
-        this.setState({[stateName]: newState})
+        this.setState({[stateName]: newState}) // use [] to create dynamic state name
     }
 
      // register button
@@ -21,19 +21,15 @@ class Register extends React.Component {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(
-                this.state  // 可以用直接object
+                this.state  // use an object directly
             )
         })
         .then(response => response.json())
         .then(data => {
-          //  console.log('register', data) // ok有抓到
             this.props.PonRouteChange('home'); // direct to mainpage
             this.props.PloadUserFromServer(data); // call parent function to setState the parent state ****
         }) 
     }
-
- // render 的地方，放formBase，也就是原本是register的code
- // 不過register button必須要連接到 app的function: route change, load user
 
     render(){
         return(
@@ -44,11 +40,10 @@ class Register extends React.Component {
                     <legend className="f2 fw6 ph0 mh0">Register</legend>
                     
                     <FormBase
-                    Proute={this.props.Proute} //把app那邊的route傳過來，看是register或是signin
-                    PsetInputState={this.setInputState}
-                    // PonEmailChange={this.onEmailChange}
-                    // PonPasswordChange={this.onPasswordChange}
+                    Proute={this.props.Proute} // get App route to see if it's Reg or Sign
+                    PsetInputState={this.setInputState} // setState function
                     />
+
                     </fieldset>
                     <div className="">
                     <input 
@@ -60,12 +55,9 @@ class Register extends React.Component {
                     </div>
                 </div>
             </main>
-        </article>
-
-        
+        </article> 
         )
-    }
-    
+    }   
 }
 
 export default Register;

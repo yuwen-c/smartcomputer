@@ -10,12 +10,12 @@ class SignIn extends React.Component{
         }
     }
 
+    // when input onchange is triggered, set state of signin
     setInputState = (stateName, newState) => {
-        this.setState({[stateName]: newState})
+        this.setState({[stateName]: newState}) // use [] to create dynamic state name
     }
 
     onClickSignIn = () => {
-        console.log("email, pw", this.state.email, this.state.password)
         // prevent an empty input sign in
         if(this.state.email || this.state.password){
         fetch('http://localhost:3000/signin', {
@@ -49,12 +49,12 @@ class SignIn extends React.Component{
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="f2 fw6 ph0 mh0">Sign In</legend>
+
                         <FormBase
-                        Proute={this.props.Proute}
-                        PsetInputState={this.setInputState}
-                        // PonEmailChange={this.onEmailChange}
-                        // PonPasswordChange={this.onPasswordChange}
+                        Proute={this.props.Proute} // get App route to see if it's Reg or Sign
+                        PsetInputState={this.setInputState} // setState function
                         />
+
                         </fieldset>
                         <div className="">
                         <input 
@@ -72,10 +72,8 @@ class SignIn extends React.Component{
                         </div>
                     </div>
                 </main>
-            </article>
-    
+            </article>  
         )
-
     }
 }
 

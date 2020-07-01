@@ -161,12 +161,12 @@ class App extends Component{
             route === 'signIn' 
             ?         
             <SignIn 
-            Proute={route}
+            Proute={route} // send route through props
             PonRouteChange={this.onRouteChange}
             PloadUserFromServer={this.loadUserFromServer}/>
             : 
             <Register 
-            Proute={route}
+            Proute={route} // send route through props
             PonRouteChange={this.onRouteChange}
             PloadUserFromServer={this.loadUserFromServer}/>
         }

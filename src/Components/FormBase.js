@@ -4,13 +4,11 @@ class FormBase extends React.Component{
     constructor(){
         super();
         this.state={
-            name:'',
-            email:'',
-            password:''
+
         }
     }
 
-    // 取得三個空格的資料
+    // get 3 input data, and trigger setState of parent component
     onNameChange = (event) => {
        this.props.PsetInputState('name', event.target.value)
         // this.setState({name: event.target.value})
@@ -27,8 +25,8 @@ class FormBase extends React.Component{
 
 
     render(){
-        // 判斷formRoute是register或是signin
         return(
+            // check if it's Reg page or Sign page, render it properly
             this.props.Proute === 'register' ?
             <div>
                 <div className="mt3">
