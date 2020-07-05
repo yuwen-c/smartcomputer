@@ -7,13 +7,8 @@ import UserLogIn from '../Components/UserLogin/UserLogIn';
 import ImgLinkForm from '../Components/ImgLinkForm/ImgLinkForm';
 import FaceRecognition from '../Components/FaceRecognition/FaceRecognition';
 import {ParticlesSetting} from '../Components/ParticlesSetting';
-import Clarifai from 'clarifai';
 import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
-//const Clarifai = require('clarifai');
-
-
-const app = new Clarifai.App({apiKey: '39549cfbc39a4a6d8c78bd943cd62036'});
 
 
 const initialState = {
@@ -50,22 +45,37 @@ class App extends Component{
   // 2. send fetch to clarifai to do face detection
   // 3. another fetch to increase the entries of user, and get the current entries back.
   onImageClick = () => {
-    this.setState({imgUrl : this.state.input});
-    //face_detect_Model from Clarifai
-    app.models.predict("a403429f2ddf4b49b307e318f00e528b", this.state.input)
-    .then(response => {     
-      if(response){
-      // call grabFaceFun & pass region data
-        this.grabFaceFun(response);
-        fetch('http://localhost:3000/image', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(this.state.user)
+    if(this.state.input){ //如果有input url才能點送出
+      this.setState({imgUrl : this.state.input}); // setState to show image on page
+      fetch('http://localhost:3000/imageUrl',{ // fetch with url to clarifai API
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          input: this.state.input
         })
-        .then(response =>response.json())
-        .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
-        .catch(console.log)
-      }      
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data){
+          // call grabFaceFun & pass region data
+            this.grabFaceFun(data);
+            // do increment of entries
+            fetch('http://localhost:3000/image', {
+              method: 'put',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(this.state.user)
+            })
+            .then(response =>response.json())
+            .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
+            .catch(console.log);
+            this.setState({input : ""});   // set input to blank
+          }      
+      })
+      .catch(console.log);
+    }
+  }
+
+    
       // this.setState({users:{ entries: data }})
       // will setState the whole user object, so we lose user name in the screen.
 
@@ -75,11 +85,8 @@ class App extends Component{
       //   user.entries = 'new count';                     // update the entries property, assign a new value                 
       //   return { user };                                 // return new object user object
       // })
-    }) 
-    .catch(err => {
-      console.log(err);
-    });
-  }
+  //   }) 
+
 
   grabFaceFun = (data) => {
     //multiple faces:
@@ -151,6 +158,7 @@ class App extends Component{
             PUser={this.state.user}
             Pentries={this.state.user.entries}/>
             <ImgLinkForm 
+            PinputValue={this.state.input}
             PonInputChange={this.onInputChange} 
             PonImageClick={this.onImageClick} />
             <FaceRecognition
@@ -178,3 +186,4 @@ class App extends Component{
 
 
 export default App;
+

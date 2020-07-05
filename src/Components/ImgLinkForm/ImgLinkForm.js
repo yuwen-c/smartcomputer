@@ -1,7 +1,7 @@
 import React from 'react';
 import './ImgLinkForm.css';
 
-const ImgLinkForm = ({PonInputChange, PonImageClick}) => {
+const ImgLinkForm = ({PonInputChange, PonImageClick, PinputValue}) => {
     return (
         <div className="pa2-l">
             <div className="formClass mw7 center pa4 br2-ns ba b--black-10">
@@ -9,7 +9,7 @@ const ImgLinkForm = ({PonInputChange, PonImageClick}) => {
                 <div className="cf">
                     <input className="f6 f5-l input-reset bn fl black-80 
                     bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns" 
-                    placeholder="Face image link" type="text" 
+                    placeholder="Face image link" type="text" value={PinputValue}
                     onChange={PonInputChange}/>
                     <input className="f6 f5-l button-reset fl pv3 tc bn 
                     bg-animate bg-black-70 hover-bg-black white pointer 
