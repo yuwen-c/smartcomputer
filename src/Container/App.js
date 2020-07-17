@@ -168,16 +168,22 @@ class App extends Component{
           </div>
           : 
             route === 'signIn' 
-            ?         
-            <SignIn 
-            Proute={route} // send route through props
-            PonRouteChange={this.onRouteChange}
-            PloadUserFromServer={this.loadUserFromServer}/>
+            ?     
+            <div>  
+              <Logo/>  
+              <SignIn 
+              Proute={route} // send route through props
+              PonRouteChange={this.onRouteChange}
+              PloadUserFromServer={this.loadUserFromServer}/>
+            </div>
             : 
-            <Register 
-            Proute={route} // send route through props
-            PonRouteChange={this.onRouteChange}
-            PloadUserFromServer={this.loadUserFromServer}/>
+            <div>  
+              <Logo/> 
+              <Register 
+              Proute={route} // send route through props
+              PonRouteChange={this.onRouteChange}
+              PloadUserFromServer={this.loadUserFromServer}/>
+            </div>
         }
       </div>
     )
