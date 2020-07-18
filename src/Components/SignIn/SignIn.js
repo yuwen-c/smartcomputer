@@ -1,12 +1,14 @@
 import React from 'react';
 import FormBase from '../FormBase/FormBase';
+import ErrorMessage from '../ErrorMessage/ErrorMesssage';
 
 class SignIn extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             email:'',
-            password:''
+            password:'',
+            errorMes:''
         }
     }
 
@@ -17,7 +19,7 @@ class SignIn extends React.Component{
 
     onClickSignIn = () => {
         // prevent an empty input sign in
-        if(this.state.email || this.state.password){
+        if(this.state.email && this.state.password){
         fetch('http://localhost:3000/signin', {
             method: 'post', 
             headers: {'Content-Type': 'application/json'},
@@ -34,17 +36,20 @@ class SignIn extends React.Component{
                 this.props.PloadUserFromServer(result); // update mainpage data
             }else{
                 console.log(result);
+                this.setState({errorMes: result});
             }
         })
         .catch(console.log)
        }
         else{
-            console.log('please enter email & password')
+            console.log('please enter email & password');
+            this.setState({errorMes:'please enter email & password'});
         }
     }
-
+ 
     render(){
         return (
+            <div>
             <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
@@ -74,6 +79,10 @@ class SignIn extends React.Component{
                     </div>
                 </main>
             </article>  
+                <ErrorMessage
+                    PerrorMessage={this.state.errorMes}
+                />
+            </div>
         )
     }
 }
