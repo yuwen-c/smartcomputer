@@ -20,27 +20,27 @@ class SignIn extends React.Component{
     onClickSignIn = () => {
         // prevent an empty input sign in
         if(this.state.email && this.state.password){
-        fetch('http://localhost:3000/signin', {
-            method: 'post', 
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password
+            fetch('http://localhost:3000/signin', {
+                method: 'post', 
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: this.state.email,
+                    password: this.state.password
+                })
             })
-        })
-        .then(response => response.json())
-        .then(result => {  // get user from server
-            if(result.id){
-                console.log(result, result.id)
-                this.props.PonRouteChange('home');
-                this.props.PloadUserFromServer(result); // update mainpage data
-            }else{
-                console.log(result);
-                this.setState({errorMes: result});
-            }
-        })
-        .catch(console.log)
-       }
+            .then(response => response.json())
+            .then(result => {  // get user from server
+                if(result.id){
+                    console.log(result, result.id)
+                    this.props.PonRouteChange('home');
+                    this.props.PloadUserFromServer(result); // update mainpage data
+                }else{
+                    console.log(result);
+                    this.setState({errorMes: result});
+                }
+            })
+            .catch(console.log)
+        }    
         else{
             console.log('please enter email & password');
             this.setState({errorMes:'please enter email & password'});

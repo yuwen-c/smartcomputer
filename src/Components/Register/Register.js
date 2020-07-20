@@ -43,10 +43,6 @@ class Register extends React.Component {
             this.setState({errorMes: 'please fill in the blanks'})
         }
     }
-    // 註冊錯誤訊息種類：
-    // 1. 有任何空白欄位：前端，一開始加if ok
-    // 2. email已存在，後端，如果有duplicate就要「回傳訊息到前端」
-    
 
     render(){
         return(
