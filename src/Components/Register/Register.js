@@ -29,13 +29,17 @@ class Register extends React.Component {
             })
             .then(response => response.json())
             .then(data => {
-                this.props.PonRouteChange('home'); // direct to mainpage
-                this.props.PloadUserFromServer(data); // call parent function to setState the parent state ****
-            }) 
+                if(data.id){
+                    this.props.PonRouteChange('home'); // direct to mainpage
+                    this.props.PloadUserFromServer(data); // call parent function to setState the parent state     
+                }
+                else{
+                    this.setState({errorMes: data});
+                }
+           }) 
             .catch(console.log)
         }
         else{
-            console.log('please fill in the blanks');
             this.setState({errorMes: 'please fill in the blanks'})
         }
     }
