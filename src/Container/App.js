@@ -9,6 +9,7 @@ import FaceRecognition from '../Components/FaceRecognition/FaceRecognition';
 import {ParticlesSetting} from '../Components/ParticlesSetting';
 import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
+import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
 
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   faceRegions : [], //multiple faces,
   route: 'signIn', // 'home', 'register', 'signIn' 
   isSignedIn: false, 
+  errMeg: "",
   user:{
     id: 0,
     name:'',
@@ -46,7 +48,11 @@ class App extends Component{
   // 3. another fetch to increase the entries of user, and get the current entries back.
   onImageClick = () => {
     if(this.state.input){ //如果有input url才能點送出
-      this.setState({imgUrl : this.state.input}); // setState to show image on page
+      this.setState({
+        imgUrl : this.state.input,  // setState to show image on page
+        faceRegions: [],        // clear blue face regions of last picture
+        errMeg: ""   // reset error Message about none-face picture
+      }); 
       fetch('http://localhost:3000/imageUrl',{ // fetch with url to clarifai API
         method: 'post',
         headers: {'Content-Type': 'application/json'},
@@ -57,7 +63,8 @@ class App extends Component{
       .then(response => response.json())
       .then(data => {
         if(data){
-          // call grabFaceFun & pass region data
+          if(data.outputs[0].data.regions){ // if there are faces
+            // call grabFaceFun & pass region data
             this.grabFaceFun(data);
             // do increment of entries
             fetch('http://localhost:3000/image', {
@@ -67,9 +74,13 @@ class App extends Component{
             })
             .then(response =>response.json())
             .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
-            .catch(console.log);
-            this.setState({input : ""});   // set input to blank
-          }      
+            .catch(console.log);           
+          }
+          else{
+            this.setState({errMeg: "no face detected!!"});
+          }
+          this.setState({input : ""});   // set input to blank
+        }      
       })
       .catch(console.log);
     }
@@ -90,9 +101,13 @@ class App extends Component{
 
   grabFaceFun = (data) => {
     //multiple faces:
-    const regionDatas = data.outputs[0].data.regions.map(item => {
-      return item.region_info.bounding_box;
-    })
+    try{
+      // 加了try catch, 如果是沒有臉的，input可以清空，但是上一個的藍框還在＊＊＊
+      // 沒臉的就不會有regions，所以要先偵測regions?
+
+      const regionDatas = data.outputs[0].data.regions.map(item => {
+        return item.region_info.bounding_box;
+      })
     // console.log("grabFaceFun-regionDatas", regionDatas); //[{},{},{}]
     
     // step 1: grad the first face only
@@ -112,6 +127,12 @@ class App extends Component{
       }
     })
     this.setState({faceRegions: regionArr});   
+
+    }
+    // 沒有偵測到臉，就會出錯，所以我在這邊設定setState error mes??
+    catch{
+      return false;
+    }
 // one person version, faceRegion is an object with one set of number
     // this.setState({faceRegion: {
     //   top: imgHeight* regionData.top_row,
@@ -161,6 +182,8 @@ class App extends Component{
             PinputValue={this.state.input}
             PonInputChange={this.onInputChange} 
             PonImageClick={this.onImageClick} />
+            <ErrorMessage
+            PerrorMessage={this.state.errMeg} />
             <FaceRecognition
             Pimg={imgUrl}
             // PfaceRegion={this.state.faceRegion} // single face version
