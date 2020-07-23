@@ -62,27 +62,27 @@ class App extends Component{
       })
       .then(response => response.json())
       .then(data => {
-        if(data){
-          if(data.outputs[0].data.regions){ // if there are faces
-            // call grabFaceFun & pass region data
-            this.grabFaceFun(data);
-            // do increment of entries
-            fetch('http://localhost:3000/image', {
-              method: 'put',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify(this.state.user)
-            })
-            .then(response =>response.json())
-            .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
-            .catch(console.log);           
-          }
-          else{
-            this.setState({errMeg: "no face detected!!"});
-          }
-          this.setState({input : ""});   // set input to blank
-        }      
+        if(data.outputs[0].data.regions){ // if there are faces
+          // call grabFaceFun & pass region data
+          this.grabFaceFun(data);
+          // do increment of entries
+          fetch('http://localhost:3000/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(this.state.user)
+          })
+          .then(response =>response.json())
+          .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
+          .catch();           
+        }
+        else{
+          this.setState({errMeg: "no face detected!!"});
+        }
+        this.setState({input : ""});   // set input to blank
       })
-      .catch(console.log);
+      .catch((error)=> {
+        this.setState({errMeg: "detection failed!!"})
+      });
     }
   }
 
@@ -101,9 +101,9 @@ class App extends Component{
 
   grabFaceFun = (data) => {
     //multiple faces:
-      const regionDatas = data.outputs[0].data.regions.map(item => {
-        return item.region_info.bounding_box;
-      })
+    const regionDatas = data.outputs[0].data.regions.map(item => {
+      return item.region_info.bounding_box;
+    })
     // console.log("grabFaceFun-regionDatas", regionDatas); //[{},{},{}]
     
     // step 1: grad the first face only

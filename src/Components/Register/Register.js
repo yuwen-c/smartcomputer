@@ -37,7 +37,7 @@ class Register extends React.Component {
                     this.setState({errorMes: data});
                 }
            }) 
-            .catch(console.log)
+            .catch()
         }
         else{
             this.setState({errorMes: 'please fill in the blanks'})
