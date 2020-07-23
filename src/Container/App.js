@@ -101,10 +101,6 @@ class App extends Component{
 
   grabFaceFun = (data) => {
     //multiple faces:
-    try{
-      // 加了try catch, 如果是沒有臉的，input可以清空，但是上一個的藍框還在＊＊＊
-      // 沒臉的就不會有regions，所以要先偵測regions?
-
       const regionDatas = data.outputs[0].data.regions.map(item => {
         return item.region_info.bounding_box;
       })
@@ -127,12 +123,6 @@ class App extends Component{
       }
     })
     this.setState({faceRegions: regionArr});   
-
-    }
-    // 沒有偵測到臉，就會出錯，所以我在這邊設定setState error mes??
-    catch{
-      return false;
-    }
 // one person version, faceRegion is an object with one set of number
     // this.setState({faceRegion: {
     //   top: imgHeight* regionData.top_row,
