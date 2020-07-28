@@ -1,6 +1,7 @@
 import React from 'react';
 import FormBase from '../FormBase/FormBase';
 import ErrorMessage from '../ErrorMessage/ErrorMesssage';
+import './SignIn.css';
 
 class SignIn extends React.Component{
     constructor(props){
@@ -47,7 +48,7 @@ class SignIn extends React.Component{
     render(){
         return (
             <div>
-            <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
+            <article className="signinClass br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">

@@ -14,7 +14,7 @@ class FormBase extends React.Component{
         // this.setState({name: event.target.value})
     }
     onEmailChange = (event) => {
-        this.props.PsetInputState('email', event.target.value)  
+        this.props.PsetInputState('email', event.target.value.toLowerCase())  
         //this.setState({email: event.target.value})
     }
     onPasswordChange = (event) => {

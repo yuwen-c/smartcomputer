@@ -1,6 +1,8 @@
 import React from 'react';
+import './Register.css';
 import FormBase from '../FormBase/FormBase.js';
-import ErrorMessage from '../ErrorMessage/ErrorMesssage.js';
+import ErrorMessage from '../ErrorMessage/ErrorMesssage.js';;
+
 
 class Register extends React.Component {
     constructor(){
@@ -47,7 +49,7 @@ class Register extends React.Component {
     render(){
         return(
             <div>
-            <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
+            <article className="registerClass br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -63,7 +65,7 @@ class Register extends React.Component {
                         <input 
                         // connect to home page
                         onClick={this.onRegisterButton}
-                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                        className=" b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                         type="submit" 
                         value="Register"/>
                         </div>
