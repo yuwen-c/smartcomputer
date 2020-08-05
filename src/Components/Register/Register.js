@@ -39,7 +39,7 @@ class Register extends React.Component {
                     this.setState({errorMes: data});
                 }
            }) 
-            .catch(this.setState({errorMes: "failed: registration"}))
+            .catch(() => {this.setState({errorMes: "failed: registration"})})
         }
         else{
             this.setState({errorMes: 'please fill in the blanks'})
