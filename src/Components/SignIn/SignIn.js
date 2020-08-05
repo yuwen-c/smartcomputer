@@ -21,7 +21,7 @@ class SignIn extends React.Component{
     onClickSignIn = () => {
         // prevent an empty input sign in
         if(this.state.email && this.state.password){
-            fetch('http://localhost:3000/signin', {
+            fetch('https://immense-river-02070.herokuapp.com/signin', {
                 method: 'post', 
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

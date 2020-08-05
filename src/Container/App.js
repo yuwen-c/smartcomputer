@@ -53,7 +53,7 @@ class App extends Component{
         faceRegions: [],        // clear blue face regions of last picture
         errMeg: ""   // reset error Message about none-face picture
       }); 
-      fetch('http://localhost:3000/imageUrl',{ // fetch with url to clarifai API
+      fetch('https://immense-river-02070.herokuapp.com/imageUrl',{ // fetch with url to clarifai API
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -66,7 +66,7 @@ class App extends Component{
           // call grabFaceFun & pass region data
           this.grabFaceFun(data);
           // do increment of entries
-          fetch('http://localhost:3000/image', {
+          fetch('https://immense-river-02070.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(this.state.user)

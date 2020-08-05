@@ -22,7 +22,7 @@ class Register extends React.Component {
      // register button
      onRegisterButton = () => {
         if(this.state.name && this.state.email && this.state.password){       
-            fetch('http://localhost:3000/register', {
+            fetch('https://immense-river-02070.herokuapp.com/register', {
                 method: 'post',
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify(
@@ -39,7 +39,7 @@ class Register extends React.Component {
                     this.setState({errorMes: data});
                 }
            }) 
-            .catch()
+            .catch(this.setState({errorMes: "failed: registration"}))
         }
         else{
             this.setState({errorMes: 'please fill in the blanks'})
