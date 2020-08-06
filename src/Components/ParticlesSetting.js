@@ -1,10 +1,10 @@
 export const ParticlesSetting = {
     particles: {
       number: {
-        value: 80,
+        value: 50,
         density: {
           enable: true,
-          area: 400
+          area: 800
         }
       },
       lineLinked: {
@@ -13,13 +13,14 @@ export const ParticlesSetting = {
         },
       }
     },
-    interactivity: {
-      events: {
-        onHover: {
-          enable: true,
-          mode: "repulse"
-        }
-      }
-    }
+    // cancel the interactivity function
+    // interactivity: {
+    //   events: {
+    //     onHover: {
+    //       enable: true,
+    //       mode: "repulse"
+    //     }
+    //   }
+    // }
   }
 
