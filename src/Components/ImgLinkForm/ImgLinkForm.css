@@ -1,9 +1,20 @@
 .formClass{
-    background: linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0),
-    linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0),
-    linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0) #753;
-    background-size: 25px 25px;
     position: relative;
-    z-index: 2;
-    /* set z-index: 2 > particles z-index: 1, shows on the top layer */
 }
+
+.formClass::after {
+    content: "";
+    background: 
+        linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0),
+        linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0),
+        linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0) #753;
+    background-size: 25px 25px;
+    /* from CSS3 pattern gallery */
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }

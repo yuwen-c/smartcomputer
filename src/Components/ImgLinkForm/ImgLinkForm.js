@@ -5,7 +5,7 @@ const ImgLinkForm = ({PonInputChange, PonImageClick, PinputValue}) => {
     return (
         <div className="pa2-l">
             <div className="formClass mw7 center pa4 br2-ns ba b--black-10">
-                <legend className="center pa0 f3 fw4 mb3 black-80 ">Face recognition</legend>
+                <legend className="legendClass center pa0 f2 fw9 mb3 black-80 b ">Face recognition</legend>
                 <div className="cf">
                     <input className="f6 f5-l input-reset bn fl black-80 
                     bg-white pa3 lh-solid w-100 w-75-m w-80-l br2-ns br--left-ns" 
