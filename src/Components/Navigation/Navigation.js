@@ -22,10 +22,10 @@ const Navigation = ({PisSignedIn, PonRouteChange}) => {
             <div className="flex justify-end">
                 <p  
                 onClick={() => PonRouteChange('signIn')}
-                className="naviClass w-10 pa2 ma2 f4 underline pointer">Sign In</p>
+                className="naviClass w-10 pa2 ma2 f4 underline pointer grow">Sign In</p>
                 <p 
                 onClick={() => PonRouteChange('register')}
-                className="naviClass w-10 pa2 ma2 f4 underline pointer">Register</p>
+                className="naviClass w-10 pa2 ma2 f4 underline pointer grow">Register</p>
             </div>
         )
     }
