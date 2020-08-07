@@ -1,7 +1,7 @@
 import React from 'react';
 import Tilt from 'react-tilt'
 import faceLogo from './facial_recognition.png';
-import './Logo.css';
+// import './Logo.css';
 
 const Logo = () => {
     return(

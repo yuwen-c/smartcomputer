@@ -1,5 +1,5 @@
 import React from 'react';
-import './Register.css';
+// import './Register.css';
 import FormBase from '../FormBase/FormBase.js';
 import ErrorMessage from '../ErrorMessage/ErrorMesssage.js';;
 
