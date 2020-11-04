@@ -35,7 +35,8 @@ const initialState = {
 class App extends Component{
   constructor(){
     super();
-    this.state = initialState;
+    this.state = JSON.parse(JSON.stringify(initialState)); // pass by value
+    // this.state = initialState; // pass by reference
   }
 
   // detect user input
@@ -72,7 +73,14 @@ class App extends Component{
             body: JSON.stringify(this.state.user)
           })
           .then(response =>response.json())
-          .then(count => this.setState(Object.assign(this.state.user, {entries: count}))) 
+          .then(count => {
+            // correct way to change property in nested state.
+            this.setState(prevstate => {
+              let user = Object.assign({}, prevstate.user);
+              user.entries = count[0];
+              return{user: user}
+            })
+          })
           .catch();           
         }
         else{
@@ -85,18 +93,6 @@ class App extends Component{
       });
     }
   }
-
-    
-      // this.setState({users:{ entries: data }})
-      // will setState the whole user object, so we lose user name in the screen.
-
-      // another way to setState
-      // this.setState(prevState => {
-      //   let user = Object.assign({}, prevState.user);  // creating copy of state variable user
-      //   user.entries = 'new count';                     // update the entries property, assign a new value                 
-      //   return { user };                                 // return new object user object
-      // })
-  //   }) 
 
 
   grabFaceFun = (data) => {
@@ -144,9 +140,10 @@ class App extends Component{
     this.setState({route: route})
   }
 
+  
   // load user data to main page.
-  loadUserFromServer = (user) => {
-    this.setState({user: user}); 
+  loadUserFromServer = (data) => {
+    this.setState({user: data});
   } 
 
   render(){
