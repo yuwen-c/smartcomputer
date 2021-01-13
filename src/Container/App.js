@@ -153,8 +153,8 @@ class App extends Component{
         params={ParticlesSetting}
         />
         <Navigation
-        PisSignedIn={isSignedIn}
-        PonRouteChange={this.onRouteChange}/>
+        isSignedIn={isSignedIn}
+        onRouteChange={this.onRouteChange}/>
         {/* 3 conditions of route state decide to show what page */}
         {
           route === 'home' 
@@ -162,8 +162,8 @@ class App extends Component{
           <div>
             <Logo/>
             <UserLogIn
-            PUser={this.state.user}
-            Pentries={this.state.user.entries}/>
+            user={this.state.user}
+            entries={this.state.user.entries}/>
             <ImgLinkForm 
             PinputValue={this.state.input}
             PonInputChange={this.onInputChange} 

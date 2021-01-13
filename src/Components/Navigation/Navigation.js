@@ -1,16 +1,16 @@
 import React from 'react';
 // import './Navigation.css';
 
-const Navigation = ({PisSignedIn, PonRouteChange}) => {
+const Navigation = ({isSignedIn, onRouteChange}) => {
     //console.log(PisSignedIn) //false
     //console.log({PisSignedIn}) //{PisSignedIn: false}
     
     // isSignedIn true: home page, sign out
-    if(PisSignedIn){
+    if(isSignedIn){
         return(
             <div className="flex justify-end">
                 <p // connect to sign in page
-                onClick={() => PonRouteChange('signIn')}
+                onClick={() => onRouteChange('signIn')}
                 className="naviClass w-10 pa2 ma2 f4 underline pointer">Sign Out</p>
             </div>
         )
@@ -21,10 +21,10 @@ const Navigation = ({PisSignedIn, PonRouteChange}) => {
         return(
             <div className="flex justify-end">
                 <p  
-                onClick={() => PonRouteChange('signIn')}
+                onClick={() => onRouteChange('signIn')}
                 className="naviClass w-10 pa2 ma2 f4 underline pointer grow">Sign In</p>
                 <p 
-                onClick={() => PonRouteChange('register')}
+                onClick={() => onRouteChange('register')}
                 className="naviClass w-10 pa2 ma2 f4 underline pointer grow">Register</p>
             </div>
         )

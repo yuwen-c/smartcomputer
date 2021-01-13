@@ -1,6 +1,5 @@
 import React from 'react';
 import Tilt from 'react-tilt'
-// import './Logo.css';
 import svg from './iconfinder_face_ID_2639811.svg';
 
 const Logo = () => {
