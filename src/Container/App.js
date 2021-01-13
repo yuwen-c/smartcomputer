@@ -189,9 +189,9 @@ class App extends Component{
             <div>  
               <Logo/> 
               <Register 
-              Proute={route} // send route through props
-              PonRouteChange={this.onRouteChange}
-              PloadUserFromServer={this.loadUserFromServer}/>
+              route={route} // send route through props
+              onRouteChange={this.onRouteChange}
+              loadUserFromServer={this.loadUserFromServer}/>
             </div>
         }
       </div>

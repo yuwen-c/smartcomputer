@@ -32,8 +32,8 @@ class Register extends React.Component {
             .then(response => response.json())
             .then(data => {
                 if(data.id){
-                    this.props.PonRouteChange('home'); // direct to mainpage
-                    this.props.PloadUserFromServer(data); // call parent function to setState the parent state     
+                    this.props.onRouteChange('home'); // direct to mainpage
+                    this.props.loadUserFromServer(data); // call parent function to setState the parent state     
                 }
                 else{
                     this.setState({errorMes: data});
@@ -56,8 +56,8 @@ class Register extends React.Component {
                         <legend className="f2 fw6 ph0 mh0">Register</legend>
 
                         <FormBase
-                        Proute={this.props.Proute} // get App route to see if it's Reg or Sign
-                        PsetInputState={this.setInputState} // setState function
+                        route={this.props.route} // get App route to see if it's Reg or Sign
+                        setInputState={this.setInputState} // setState function
                         />
 
                         </fieldset>
@@ -73,7 +73,7 @@ class Register extends React.Component {
                 </main>
             </article> 
             <ErrorMessage
-                PerrorMessage={this.state.errorMes}
+                errorMessage={this.state.errorMes}
             />
             </div>
         )
