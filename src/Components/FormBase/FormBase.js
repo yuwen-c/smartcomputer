@@ -10,15 +10,15 @@ class FormBase extends React.Component{
 
     // get 3 input data, and trigger setState of parent component
     onNameChange = (event) => {
-       this.props.PsetInputState('name', event.target.value)
+       this.props.setInputState('name', event.target.value)
         // this.setState({name: event.target.value})
     }
     onEmailChange = (event) => {
-        this.props.PsetInputState('email', event.target.value.toLowerCase())  
+        this.props.setInputState('email', event.target.value.toLowerCase())  
         //this.setState({email: event.target.value})
     }
     onPasswordChange = (event) => {
-        this.props.PsetInputState('password', event.target.value)
+        this.props.setInputState('password', event.target.value)
         // this.setState({password: event.target.value})
     }
 
@@ -27,7 +27,7 @@ class FormBase extends React.Component{
     render(){
         return(
             // check if it's Reg page or Sign page, render it properly
-            this.props.Proute === 'register' ?
+            this.props.route === 'register' ?
             <div>
                 <div className="mt3">
                     <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>

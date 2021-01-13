@@ -32,8 +32,8 @@ class SignIn extends React.Component{
             .then(response => response.json())
             .then(result => {  // get user from server
                 if(result.id){
-                    this.props.PonRouteChange('home');
-                    this.props.PloadUserFromServer(result); // update mainpage data
+                    this.props.onRouteChange('home');
+                    this.props.loadUserFromServer(result); // update mainpage data
                 }else{
                     this.setState({errorMes: result});
                 }
@@ -55,8 +55,8 @@ class SignIn extends React.Component{
                         <legend className="f2 fw6 ph0 mh0">Sign In</legend>
 
                         <FormBase
-                        Proute={this.props.Proute} // get App route to see if it's Reg or Sign
-                        PsetInputState={this.setInputState} // setState function
+                        route={this.props.route} // get App route to see if it's Reg or Sign
+                        setInputState={this.setInputState} // setState function
                         />
 
                         </fieldset>
@@ -71,14 +71,14 @@ class SignIn extends React.Component{
                         <div className="lh-copy mt3">
                         <div 
                         // connect to register page  
-                        onClick={() => this.props.PonRouteChange('register')}
+                        onClick={() => this.props.onRouteChange('register')}
                         className="f5 link dim black db pointer">Register</div>
                         </div>
                     </div>
                 </main>
             </article>  
                 <ErrorMessage
-                    PerrorMessage={this.state.errorMes}
+                    errorMessage={this.state.errorMes}
                 />
             </div>
         )
