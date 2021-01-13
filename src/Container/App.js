@@ -11,7 +11,6 @@ import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
 
-
 const initialState = {
   input : '',
   imgUrl : '',
