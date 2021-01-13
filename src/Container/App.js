@@ -163,17 +163,17 @@ class App extends Component{
             <Logo/>
             <UserLogIn
             user={this.state.user}
-            entries={this.state.user.entries}/>
+            entries={this.state.user.entries}/> {/*?*/}
             <ImgLinkForm 
-            PinputValue={this.state.input}
-            PonInputChange={this.onInputChange} 
-            PonImageClick={this.onImageClick} />
+            inputValue={this.state.input}
+            onInputChange={this.onInputChange} 
+            onImageClick={this.onImageClick} />
             <ErrorMessage
-            PerrorMessage={this.state.errMeg} />
+            errorMessage={this.state.errMeg} />
             <FaceRecognition
-            Pimg={imgUrl}
+            img={imgUrl}
             // PfaceRegion={this.state.faceRegion} // single face version
-            PfaceRegions={faceRegions}/>
+            faceRegions={faceRegions}/>
           </div>
           : 
             route === 'signIn' 
