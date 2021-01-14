@@ -7,8 +7,8 @@ const Logo = () => {
         <div>
         <Tilt className="logoClass Tilt h4 w4 ml3" options={{ max : 60 }}  >
             <div className="Tilt-inner">  
-                <img src={svg} alt=''/>
-                <h4>Face Finder!</h4>
+                <img src={svg} alt='logo'/>
+                <div>Face Finder!</div>
             </div>
         </Tilt>
         </div>
