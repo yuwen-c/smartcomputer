@@ -2,13 +2,13 @@ import React from 'react';
 
 const UserLogIn = ({user}) => {
     return (
-        <article className="mw8 center ph3 ph5-ns tc br2 mb0">
-            <p className="fw3 f3 mt0 mb1">
+        <article className="mw8 pt4">
+            <div className="f3 fw5">
                 {user.name}, your current entries is...
-            </p>
-            <p className="fw5 f3 mt0 ">
+            </div>
+            <div className="f3 fw8 pt1 pb2">
                 #{user.entries}
-            </p>
+            </div>
         </article>
 
     )
