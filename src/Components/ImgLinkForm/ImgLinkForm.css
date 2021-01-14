@@ -17,4 +17,5 @@
     right: 0;
     position: absolute;
     z-index: -1;   
+    border-radius: 1rem;
   }
