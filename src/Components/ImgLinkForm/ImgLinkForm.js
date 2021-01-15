@@ -8,10 +8,22 @@ const ImgLinkForm = ({onInputChange, onImageClick, inputValue}) => {
                 <legend className="legendClass center f4 b black-70 pb1">
                 Face recognition</legend>
                 <div>
-                    <input className="f6 f5-l input-reset bn black-80 
-                    bg-white pa3 lh-solid w-90 w-75-m w-80-l br2 br--top br--left-ns" 
-                    placeholder="Face image link" type="text" value={inputValue}
-                    onChange={onInputChange}/>
+
+                    <div className="w-90 w-75-m w-80-l relative dib ">
+                        <input className="f6 f5-l input-reset bn black-80 
+                        bg-white pa3 lh-solid w-100 br2 br--top br--left-ns" 
+                        placeholder="Face image link" type="text" value={inputValue}
+                        onChange={onInputChange}/>
+
+                        <span className="clearButton w-10 w2-ns absolute pa2">
+                            <svg 
+                            className="center"
+                            fill='none' stroke='#222222' strokeWidth='10' strokeDashoffset='194' strokeDasharray='0' strokeLinecap='round' strokeLinejoin='round' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+                                <circle cx="50" cy="50" r="40"/> 
+                                <line x1="35" y1="50" x2="65" y2="50" />
+                            </svg>
+                        </span>
+                    </div> 
 
                     <input className="f6 f5-l button-reset pv3 tc bn 
                     bg-animate bg-black-70 hover-bg-black white pointer 
