@@ -156,9 +156,10 @@ class App extends Component{
         isSignedIn={isSignedIn}
         onRouteChange={this.onRouteChange}/>
         {/* 3 conditions of route state decide to show what page */}
-        {
+
+         {
           route === 'home' 
-          ? 
+          ?  
           <div>
             <Logo/>
             <UserLogIn
@@ -175,7 +176,7 @@ class App extends Component{
             // PfaceRegion={this.state.faceRegion} // single face version
             faceRegions={faceRegions}/>
           </div>
-          : 
+           : 
             route === 'signIn' 
             ?     
             <div>  
