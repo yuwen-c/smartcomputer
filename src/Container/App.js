@@ -42,6 +42,11 @@ class App extends Component{
   onInputChange = (event) => {
       this.setState({input: event.target.value})
   }
+
+  onDeleteButton = () => {
+    this.setState({input: ''})
+  }
+
   // user click to send an url:
   // 1. show image on the screen
   // 2. send fetch to clarifai to do face detection
@@ -157,9 +162,9 @@ class App extends Component{
         onRouteChange={this.onRouteChange}/>
         {/* 3 conditions of route state decide to show what page */}
 
-         {/* {
+          {
           route === 'home' 
-          ?   */}
+          ?   
           <div>
             <Logo/>
             <UserLogIn
@@ -168,6 +173,7 @@ class App extends Component{
             <ImgLinkForm 
             inputValue={this.state.input}
             onInputChange={this.onInputChange} 
+            onDeleteButton={this.onDeleteButton}
             onImageClick={this.onImageClick} />
             <ErrorMessage
             errorMessage={this.state.errMeg} />
@@ -176,7 +182,7 @@ class App extends Component{
             // PfaceRegion={this.state.faceRegion} // single face version
             faceRegions={faceRegions}/>
           </div>
-           {/* : 
+            : 
             route === 'signIn' 
             ?     
             <div>  
@@ -194,7 +200,7 @@ class App extends Component{
               onRouteChange={this.onRouteChange}
               loadUserFromServer={this.loadUserFromServer}/>
             </div>
-        } */}
+        } 
       </div>
     )
   }

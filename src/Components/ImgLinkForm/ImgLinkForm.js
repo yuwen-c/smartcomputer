@@ -1,7 +1,7 @@
 import React from 'react';
 import './ImgLinkForm.css';
 
-const ImgLinkForm = ({onInputChange, onImageClick, inputValue}) => {
+const ImgLinkForm = ({onInputChange, onImageClick, onDeleteButton, inputValue}) => {
     return (
         <div className="w-80 center">
             <div className="formClass center pt3 pb3 ph3 br2 ba b--black-10">
@@ -17,6 +17,7 @@ const ImgLinkForm = ({onInputChange, onImageClick, inputValue}) => {
 
                         <span className="clearButton w-10 w2-ns absolute pa2">
                             <svg 
+                            onClick={onDeleteButton}
                             className="center"
                             fill='none' stroke='#222222' strokeWidth='10' strokeDashoffset='194' strokeDasharray='0' strokeLinecap='round' strokeLinejoin='round' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
                                 <circle cx="50" cy="50" r="40"/> 
