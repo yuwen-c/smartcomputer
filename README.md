@@ -2,7 +2,7 @@
 ### Detecting faces in a photo by simply sending an url
 
 <h2 align="center">
-  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="600px" />
+  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="800px" />
   <br>
 </h2>
 
@@ -27,7 +27,7 @@
 - Register as a member.
 
 <h2 align="center">
-  <img src="example/smart-computer_register.png" alt="screenshot" width="250px" />
+  <img src="example/smart-computer_register.png" alt="screenshot" width="300px" />
   <br>
 </h2>
 
@@ -37,6 +37,6 @@
 - The faces will be marked out by seconds.
 
 <h2 align="center">
-  <img src="example/smart-computer_detection.png" alt="screenshot" width="250px" />
+  <img src="example/smart-computer_detection.png" alt="screenshot" width="300px" />
   <br>
 </h2>
