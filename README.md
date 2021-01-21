@@ -11,6 +11,8 @@
 ✨ **Modern UI** for both mobile and desktop\
 ✨ Built by **React.js**\
 ✨ Styled with **Tachyons**\
+✨ Dynamic background using react-particles-js\
+✨ Hover effect using react-tilt\
 ✨ Face recognition functionality built by **Clarifai API**\
 ✨ Backend built with **node.js**, **express.js**\
 ✨ Using **RestfulAPI**\
