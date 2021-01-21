@@ -1,8 +1,8 @@
 # Smart Computer
-### Detecting faces in a photo by simply pasting an url
+### Detecting faces in a photo by simply sending an url
 
 <h2 align="center">
-  <img src="example/smart-computer.screenshot.png" alt="screenshot" width="600px" />
+  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="600px" />
   <br>
 </h2>
 
@@ -25,7 +25,18 @@
 ## How to use?
 
 - Register as a member.
+
+<h2 align="center">
+  <img src="example/smart-computer_register.png" alt="screenshot" width="600px" />
+  <br>
+</h2>
+
+
 - Find a picture of famous person you like in google.
 - Paste the url of that photo in the box and submit.
 - The faces will be marked out by seconds.
 
+<h2 align="center">
+  <img src="example/smart-computer_detection.png" alt="screenshot" width="600px" />
+  <br>
+</h2>
