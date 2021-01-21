@@ -1,12 +1,12 @@
 # Smart Computer
-### Detecting faces in a photo by simply sending an url
+### Detecting faces in a photo by simply sending an url 👦 👧
 
 <h2 align="center">
-  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="800px" />
+  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="700px" />
   <br>
 </h2>
 
-## Features
+## Features 📝
 
 ✨ **Modern UI** for both mobile and desktop\
 ✨ Built by **React.js**\
@@ -22,7 +22,7 @@
 ✨ Back-end deployed to **Heroku**
 
 
-## How to use?
+## How to use? 🔍
 
 - Register as a member.
 
@@ -32,9 +32,9 @@
 </h2>
 
 
-- Find a picture of famous person you like in google.
+- Find a picture of famous person you like in google. 📷
 - Paste the url of that photo in the box and submit.
-- The faces will be marked out by seconds.
+- The faces will be marked out by seconds. 
 
 <h2 align="center">
   <img src="example/smart-computer_detection.png" alt="screenshot" width="300px" />
