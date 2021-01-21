@@ -2,7 +2,7 @@
 ### Detecting faces in a photo by simply pasting an url
 
 <h2 align="center">
-  <img src="" alt="snapshot" width="600px" />
+  <img src="example/smart-computer.screenshot.png" alt="screenshot" width="600px" />
   <br>
 </h2>
 
