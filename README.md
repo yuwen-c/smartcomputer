@@ -1,5 +1,5 @@
 # Smart Computer
-### detect faces in a photo by simply paste an url
+### Detecting faces in a photo by simply pasting an url
 
 <h2 align="center">
   <img src="" alt="snapshot" width="600px" />
