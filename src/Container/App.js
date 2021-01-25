@@ -11,6 +11,7 @@ import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
 import Footer from '../Components/Footer/Footer';
+import ErrorBoundary from '../Components/ErrorBoundary/ErrorBoundary';
 
 const initialState = {
   input : '',
@@ -144,47 +145,59 @@ class App extends Component{
         <Particles className='particlesClass'
         params={ParticlesSetting}
         />
-        <Navigation
-        isSignedIn={isSignedIn}
-        onRouteChange={this.onRouteChange}/>
-        {/* 3 conditions of route state decide to show what page */}
+        <ErrorBoundary>
+          <Navigation
+          isSignedIn={isSignedIn}
+          onRouteChange={this.onRouteChange}/>
+        </ErrorBoundary>
 
+        {/* 3 conditions of route state decide to show what page */}
           {
           route === 'home' 
           ?   
           <div>
             <Logo/>
+            <ErrorBoundary>
             <UserLogIn
             user={user}/>
+            </ErrorBoundary>
+            <ErrorBoundary>
             <ImgLinkForm 
             inputValue={input}
             onInputChange={this.onInputChange} 
             onDeleteButton={this.onDeleteButton}
             onImageClick={this.onImageClick} />
+            </ErrorBoundary>
             <ErrorMessage
             errorMessage={errMeg} />
+            <ErrorBoundary>
             <FaceRecognition
             img={imgUrl}
             // PfaceRegion={this.state.faceRegion} // single face version
             faceRegions={faceRegions}/>
+            </ErrorBoundary>
           </div>
             : 
             route === 'signIn' 
             ?     
             <div>  
               <Logo/>  
-              <SignIn 
-              route={route} // send route through props
-              onRouteChange={this.onRouteChange}
-              loadUserFromServer={this.loadUserFromServer}/>
+              <ErrorBoundary>
+                <SignIn 
+                route={route} // send route through props
+                onRouteChange={this.onRouteChange}
+                loadUserFromServer={this.loadUserFromServer}/>
+              </ErrorBoundary>
             </div>
             : 
             <div>  
               <Logo/> 
-              <Register 
-              route={route} // send route through props
-              onRouteChange={this.onRouteChange}
-              loadUserFromServer={this.loadUserFromServer}/>
+              <ErrorBoundary>
+                <Register 
+                route={route} // send route through props
+                onRouteChange={this.onRouteChange}
+                loadUserFromServer={this.loadUserFromServer}/>
+              </ErrorBoundary>
             </div>
         } 
         <Footer/>
