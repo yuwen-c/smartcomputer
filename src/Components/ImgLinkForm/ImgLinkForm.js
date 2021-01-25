@@ -18,10 +18,11 @@ const ImgLinkForm = ({onInputChange, onImageClick, onDeleteButton, inputValue}) 
                         <span className="clearButton w-10 w2-ns absolute pa2">
                             <svg 
                             onClick={onDeleteButton}
-                            className="center"
-                            fill='none' stroke='#222222' strokeWidth='10' strokeDashoffset='194' strokeDasharray='0' strokeLinecap='round' strokeLinejoin='round' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-                                <circle cx="50" cy="50" r="40"/> 
-                                <line x1="35" y1="50" x2="65" y2="50" />
+                            className="center"             
+                            fill='none' stroke='#222222' strokeWidth='8' strokeDashoffset='0' strokeDasharray='0' strokeLinecap='round' strokeLinejoin='round' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+                            <polygon fill="none" points="5,50 30,20 90,20 90,80 30,80"/> 
+                            <line x1="70" y1="38" x2="45" y2="62" /> 
+                            <line x1="45" y1="38" x2="70" y2="62" />
                             </svg>
                         </span>
                     </div> 
