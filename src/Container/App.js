@@ -10,6 +10,7 @@ import {ParticlesSetting} from '../Components/ParticlesSetting';
 import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
+import Footer from '../Components/Footer/Footer';
 
 const initialState = {
   input : '',
@@ -153,7 +154,7 @@ class App extends Component{
   render(){
     const {isSignedIn, route, imgUrl, faceRegions} = this.state;
     return (
-      <div className="App">
+      <div className="App flex flex-column vh-100">
         <Particles className='particlesClass'
         params={ParticlesSetting}
         />
@@ -201,6 +202,7 @@ class App extends Component{
               loadUserFromServer={this.loadUserFromServer}/>
             </div>
         } 
+        <Footer/>
       </div>
     )
   }
