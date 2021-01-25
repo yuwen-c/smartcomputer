@@ -44,6 +44,7 @@ class App extends Component{
       this.setState({input: event.target.value})
   }
 
+  // delete url
   onDeleteButton = () => {
     this.setState({input: ''})
   }

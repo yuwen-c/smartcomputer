@@ -13,6 +13,13 @@ class SignIn extends React.Component{
         }
     }
 
+    // wake up the server
+    componentDidMount = () => {
+        fetch('https://immense-river-02070.herokuapp.com/')
+        .then(response => response.json())
+        .then(result => {})
+    }
+
     // when input onchange is triggered, set state of signin
     setInputState = (stateName, newState) => {
         this.setState({[stateName]: newState}) // use [] to create dynamic state name
