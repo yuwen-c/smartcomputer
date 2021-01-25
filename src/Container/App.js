@@ -138,7 +138,7 @@ class App extends Component{
   } 
 
   render(){
-    const {isSignedIn, route, imgUrl, faceRegions} = this.state;
+    const {isSignedIn, route, user, input, errMeg, imgUrl, faceRegions} = this.state;
     return (
       <div className="App flex flex-column vh-100">
         <Particles className='particlesClass'
@@ -155,15 +155,14 @@ class App extends Component{
           <div>
             <Logo/>
             <UserLogIn
-            user={this.state.user}
-            entries={this.state.user.entries}/> {/*?*/}
+            user={user}/>
             <ImgLinkForm 
-            inputValue={this.state.input}
+            inputValue={input}
             onInputChange={this.onInputChange} 
             onDeleteButton={this.onDeleteButton}
             onImageClick={this.onImageClick} />
             <ErrorMessage
-            errorMessage={this.state.errMeg} />
+            errorMessage={errMeg} />
             <FaceRecognition
             img={imgUrl}
             // PfaceRegion={this.state.faceRegion} // single face version
