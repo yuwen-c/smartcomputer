@@ -102,20 +102,14 @@ class App extends Component{
 
 
   grabFaceFun = (data) => {
-    //multiple faces:
     const regionDatas = data.outputs[0].data.regions.map(item => {
       return item.region_info.bounding_box;
     })
-    // console.log("grabFaceFun-regionDatas", regionDatas); //[{},{},{}]
-    
-    // step 1: grad the first face only
-    // const regionData = data.outputs[0].data.regions[0].region_info.bounding_box;
 
     const imgEle = document.getElementById("imgID"); //get the url image
     const imgHeight = imgEle.height; //height of image
     const imgWidth = imgEle.width; //width of image
     
-    // get four sides of face regions then set to faceRegions state
     const regionArr = regionDatas.map((item, index) => {
       return {
         top: imgHeight* item.top_row,
@@ -125,13 +119,6 @@ class App extends Component{
       }
     })
     this.setState({faceRegions: regionArr});   
-// one person version, faceRegion is an object with one set of number
-    // this.setState({faceRegion: {
-    //   top: imgHeight* regionData.top_row,
-    //   bottom: imgHeight- (regionData.bottom_row* imgHeight),
-    //   left: imgWidth* regionData.left_col,
-    //   right: imgWidth- (regionData.right_col* imgWidth)
-    // }})
   }  
 
   onRouteChange = (route) => {
@@ -139,8 +126,6 @@ class App extends Component{
       this.setState({isSignedIn: true})
     } 
     else if(route === 'signIn'){
-      // this.setState({isSignedIn: false})
-      // refresh the initialState when user sign out
       this.setState(initialState)
     }
     this.setState({route: route})
