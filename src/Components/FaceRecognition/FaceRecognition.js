@@ -4,7 +4,7 @@ import './FaceRecognition.css'
 const FaceRecognition = ({img, faceRegion, faceRegions}) => {
     return(
         <div className='flex justify-center'>
-            <div className='mt2 mb2 relative w-80'>
+            <div className='mt2 mb2 relative '>
                 <img id='imgID' className="" width='' height='auto'
                 src={img}  alt=""/>              
                 {
