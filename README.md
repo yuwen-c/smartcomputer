@@ -1,5 +1,5 @@
 # Smart Computer
-### Detecting faces in a photo by simply sending an url 👦 👧
+### AI Detecting faces in a photo by simply sending an url 👦 👧
 ### back-end server goes [here](https://github.com/yuwen-c/smartcomputerAPI)
 
 <h2 align="center">
@@ -14,7 +14,7 @@
 ✨ Styled with **Tachyons**\
 ✨ Dynamic background using react-particles-js\
 ✨ Hover effect using react-tilt\
-✨ Face recognition functionality built by **Clarifai API**\
+✨ **AI Face recognition** functionality built by **Clarifai API**\
 ✨ Backend built with **node.js**, **express.js**\
 ✨ Using **RestfulAPI**\
 ✨ Saving user data in **PostgreSQL**\
