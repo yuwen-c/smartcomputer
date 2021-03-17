@@ -1,6 +1,7 @@
 # Smart Computer
-### AI Face Detection in a photo by simply sending an url 👦 👧
-### back-end server goes [here](https://github.com/yuwen-c/smartcomputerAPI)
+## AI Face Detection in a photo by simply sending an url 👦 👧
+## [see live](https://yuwen-smartcomputer.netlify.app/)
+## back-end server goes [here](https://github.com/yuwen-c/smartcomputerAPI)
 
 <h2 align="center">
   <img src="example/smart-computer_screenshot.png" alt="screenshot" width="700px" />
