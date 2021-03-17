@@ -28,7 +28,7 @@
 🔐 save user password hash with bcrypt\
 🔐 Clarifai API key excluded from git\
 🔐 Clarifai API key set on Heroku\
-🔐 save clarifai API key as environment variable\
+🔐 save clarifai API key as environment variable
 
 ## How to use? 🔍
 
