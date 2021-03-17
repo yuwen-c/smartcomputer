@@ -10,19 +10,25 @@
 
 ## Features 📝
 
+✨ **AI Face Detection** functionality built by **Clarifai API**\
 ✨ **Modern UI** for both mobile and desktop\
 ✨ Built by **React.js**\
 ✨ Styled with **Tachyons**\
 ✨ Dynamic background using react-particles-js\
 ✨ Hover effect using react-tilt\
-✨ **AI Face Detection** functionality built by **Clarifai API**\
-✨ Backend built with **node.js**, **express.js**\
+✨ Backend built with **node.js**, **express.js** | back-end server goes [here](https://github.com/yuwen-c/smartcomputerAPI)\
 ✨ Using **RestfulAPI**\
 ✨ Saving user data in **PostgreSQL**\
 ✨ Password hashed by **Bcrypt**\
 ✨ Front-end deployed to **Netlify**\
 ✨ Back-end deployed to **Heroku**
 
+## security
+
+🔐 save user password hash with bcrypt\
+🔐 Clarifai API key excluded from git\
+🔐 Clarifai API key set on Heroku\
+🔐 save clarifai API key as environment variable\
 
 ## How to use? 🔍
 
