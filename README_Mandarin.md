@@ -1,4 +1,4 @@
-# Smart Computer AI 人臉偵測系統
+# Smart Computer - AI 人臉偵測系統
 
 ## [README in English](https://github.com/yuwen-c/smartcomputer/blob/master/README.md)
 ## 上傳照片網址，即可辨識出人臉的部分，並加以標記。
@@ -10,12 +10,9 @@
 - 使用者登入後，送出包含人臉的照片網址，系統可將人臉部分辨識出來，並加以標記。
 - 使用次數會顯示在畫面上，隨著送出網址後即時更新。
 
-@ 登入、註冊、
-@ 前後端 資料連結 圖
-
 ## 特點 📝
 ### API 雲端服務
-✨ AI Face Detection functionality built by Clarifai API
+✨ 連接Clarifai雲端服務的人臉辨識API，將資料回傳前端。
 
 ### 整體架構
 ✨ 前端網站使用React.js。
@@ -47,6 +44,31 @@
 －維護、操作容易，適合小流量網站。
 
 ## 畫面預覽
-- 使用者登入
+
+- 桌機版人臉偵測結果畫面，顯示使用者名稱、使用次數，並將人臉框出：
+
+<h2 align="center">
+  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="700px" />
+  <br>
+</h2>
+
+- 手機版人臉偵測結果畫面，將圖片大小適應手機螢幕尺寸：
+
+<h2 align="center">
+  <img src="example/smart-computer_detection.png" alt="screenshot" width="300px" />
+  <br>
+</h2>
+
 
 ## 詳細作法
+@ 登入、註冊、
+@ 前後端 資料連結 圖
+
+1. 註冊，建立新使用者。使用次數預設為0。
+
+
+2. sign in, register page整合
+- 因為這兩頁的樣式功能有許多雷同，所以將共同的部分取出，也就是欄位的部分。
+- sign in, register page引入該欄位component，並定義function來偵測欄位改變，將此function傳入"欄位component"。
+- 欄位component偵測改變，如果有改變，就會引發parent component-也就是sign in , reg的component的state改變。
+- 是哪個parent收到setState?
