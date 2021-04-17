@@ -1,17 +1,6 @@
 import React, {useState} from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMesssage';
 
-// a combination of sign in and register component
-
-// class Entry extends React.Component{
-//     constructor(){
-//         super();
-//         this.state = {
-
-//         }
-//     }
-// }
-
 const Entry = ({route}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -30,21 +19,28 @@ const Entry = ({route}) => {
         setPassword(event.target.value);
     }
 
+    let title = route === 'signIn' ?  "Sign In" : "Register"
+
     return(
         <div className="pt4">
         <article className="registerClass br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
             <main className="pa4 black-80">
                 <div className="measure">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                    <legend className="f2 fw6 ph0 mh0">Register</legend>
+                    <legend className="f2 fw6 ph0 mh0">{title}</legend>
                 <div>
-                <div className="mt3">
-                    <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
-                    <input 
-                    onChange={onNameChange}
-                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                    type="name" name="name"  id="name"/>
-                </div>
+                {
+                route === 'register' ? 
+                    <div className="mt3">
+                        <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                        <input 
+                        onChange={onNameChange}
+                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                        type="name" name="name"  id="name"/>
+                    </div>
+                :
+                    null
+                }
                 <div className="mt3">
                     <label className="db fw6 lh-copy f6" htmlFor="email-address">E-mail</label>
                     <input 
@@ -69,7 +65,7 @@ const Entry = ({route}) => {
                     // onClick={this.onRegisterButton}
                     className=" b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                     type="submit" 
-                    value="Register"/>
+                    value={title}/>
                     </div>
                 </div>
             </main>
