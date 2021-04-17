@@ -183,20 +183,30 @@ class App extends Component{
             <div>  
               <Logo/>  
               <ErrorBoundary>
-                <SignIn 
+                <Entry
                 route={route} // send route through props
                 onRouteChange={this.onRouteChange}
-                loadUserFromServer={this.loadUserFromServer}/>
+                loadUserFromServer={this.loadUserFromServer} 
+                />
+                {/* <SignIn 
+                route={route} // send route through props
+                onRouteChange={this.onRouteChange}
+                loadUserFromServer={this.loadUserFromServer}/> */}
               </ErrorBoundary>
             </div>
             : 
             <div>  
               <Logo/> 
               <ErrorBoundary>
-                <Register 
+                <Entry
                 route={route} // send route through props
                 onRouteChange={this.onRouteChange}
-                loadUserFromServer={this.loadUserFromServer}/>
+                loadUserFromServer={this.loadUserFromServer} 
+                />
+                {/* <Register 
+                route={route} // send route through props
+                onRouteChange={this.onRouteChange}
+                loadUserFromServer={this.loadUserFromServer}/> */}
               </ErrorBoundary>
             </div>
         } 
