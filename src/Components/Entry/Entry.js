@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ErrorMessage from '../ErrorMessage/ErrorMesssage';
 
 // a combination of sign in and register component
 
@@ -11,11 +12,23 @@ import React, {useState} from 'react';
 //     }
 // }
 
-const Entry = () => {
+const Entry = ({route}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errMes, setErrMes] = useState('');
+    const [errorMes, setErrorMes] = useState('');
+
+    const onNameChange = (event) => {
+        setName(event.target.value);
+    }
+    
+    const onEmailChange = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const onPasswordChange = (event) => {
+        setPassword(event.target.value);
+    }
 
     return(
         <div className="pt4">
@@ -24,31 +37,25 @@ const Entry = () => {
                 <div className="measure">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                     <legend className="f2 fw6 ph0 mh0">Register</legend>
-
-                    <FormBase
-                    route={this.props.route} // get App route to see if it's Reg or Sign
-                    setInputState={this.setInputState} // setState function
-                    email={this.state.email}
-                    />
                 <div>
                 <div className="mt3">
                     <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                     <input 
-                    onChange={this.onNameChange}
+                    onChange={onNameChange}
                     className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                     type="name" name="name"  id="name"/>
                 </div>
                 <div className="mt3">
                     <label className="db fw6 lh-copy f6" htmlFor="email-address">E-mail</label>
                     <input 
-                    onChange={this.onEmailChange}
+                    onChange={onEmailChange}
                     className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                     type="email" name="email"  id="email"/>
                 </div>
                 <div className="mv3">
                     <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                     <input 
-                    onChange={this.onPasswordChange}
+                    onChange={onPasswordChange}
                     className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                     type="password" name="password"  id="password"/>
                 </div>
@@ -59,7 +66,7 @@ const Entry = () => {
                     <div className="">
                     <input 
                     // connect to home page
-                    onClick={this.onRegisterButton}
+                    // onClick={this.onRegisterButton}
                     className=" b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                     type="submit" 
                     value="Register"/>
@@ -68,7 +75,7 @@ const Entry = () => {
             </main>
         </article> 
         <ErrorMessage
-            errorMessage={this.state.errorMes}
+            errorMessage={errorMes}
         />
         </div>
 

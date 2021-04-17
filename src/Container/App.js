@@ -9,6 +9,7 @@ import FaceRecognition from '../Components/FaceRecognition/FaceRecognition';
 import {ParticlesSetting} from '../Components/ParticlesSetting';
 import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
+import Entry from '../Components/Entry/Entry';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
 import Footer from '../Components/Footer/Footer';
 import ErrorBoundary from '../Components/ErrorBoundary/ErrorBoundary';
