@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMesssage';
 
 const EntryPage = ({ route, onRouteChange, loadUserFromServer }) => {
@@ -18,6 +18,12 @@ const EntryPage = ({ route, onRouteChange, loadUserFromServer }) => {
     const onPasswordChange = (event) => {
         setPassword(event.target.value);
     }
+    // wake up backend
+    useEffect(() => {
+        fetch('https://immense-river-02070.herokuapp.com/')
+        .then(response => response.json())
+        .then(result )
+    }, [])
 
     // send data to back end(fetch), create user in tables, refresh user data in App
     const onRegister = () => {
