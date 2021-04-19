@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMesssage';
 
-const Entry = ({ route, onRouteChange, loadUserFromServer }) => {
+const EntryPage = ({ route, onRouteChange, loadUserFromServer }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -130,4 +130,4 @@ const Entry = ({ route, onRouteChange, loadUserFromServer }) => {
     )
 }
 
-export default Entry;
+export default EntryPage;
