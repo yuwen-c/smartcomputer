@@ -7,8 +7,6 @@ import UserLogIn from '../Components/UserLogin/UserLogIn';
 import ImgLinkForm from '../Components/ImgLinkForm/ImgLinkForm';
 import FaceRecognition from '../Components/FaceRecognition/FaceRecognition';
 import { ParticlesSetting } from '../Components/ParticlesSetting';
-import SignIn from '../Components/SignIn/SignIn';
-import Register from '../Components/Register/Register';
 import EntryPage from '../Components/EntryPage/EntryPage';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
 import Footer from '../Components/Footer/Footer';
