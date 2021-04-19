@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserLogIn = ({user}) => {
     return (
-        <article className="mw8 pt4">
+        <article className="mw8 pt4 ph1">
             <div className="f3 fw5">
                 {user.name}, your current entries is...
             </div>
