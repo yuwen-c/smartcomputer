@@ -67,8 +67,42 @@
 1. 註冊，建立新使用者。使用次數預設為0。
 
 
-2. sign in, register page整合
-- 因為這兩頁的樣式功能有許多雷同，所以將共同的部分取出，也就是欄位的部分。
-- sign in, register page引入該欄位component，並定義function來偵測欄位改變，將此function傳入"欄位component"。
-- 欄位component偵測改變，如果有改變，就會引發parent component-也就是sign in , reg的component的state改變。
-- 是哪個parent收到setState?
+2. Sign in page, Register page整合成同一個EntryPage
+- 因為這兩頁的樣式、功能有許多雷同，所以整合成一個component，Don't repear yourself。
+- 差異處，用```ternary operator```，根據所在頁面，來判斷要回傳什麼內容。
+- 使用useState和useEffect，用function component就能儲存、改變state，且更簡潔。
+
+3. 送出網址部分
+- 使用者貼上網址，觸發input state改變。
+- 待使用者點送出，此時會改變url state，使圖片顯示在畫面上，並將此網址送到後端。
+- 後端會將Clarifai辨識出來的位置回傳到前端，用css設定顯示在畫面上。
+- 同時，會再連接到後端，將該名使用者的使用次數+1，並且回傳，顯示。
+
+4. route change   與 navigation
+- 頁面路徑共有：sign in/ register/ home。
+- route設定為home時，將「是否登入」改為true。
+- 依照「是否登入」來決定導覽列要顯示：登入，還是登出。
+- route選擇到sign in時，refresh user state。
+
+5. render不同畫面
+- 以三元運算子，根據home route，決定不同的render
+
+6. 環境變數設定 後端[放連結] (env檔，server檔，config.js檔，env example檔)
+- 開發階段，安裝```dotenv```，（需要在```server.js```引入），將環境變量從```.env```下載到```process.env```。(生產階段不需要)
+～安裝為dev Dependencies，減少project大小
+- 設定```.env```檔，並且放在```gitignore```以免被追蹤。
+~密碼不外流
+- 在```.env```設定: clarifai api key and url。
+
+- 另外設定```config.js```檔，裡面用變數去命名```process.env```的環境變數，並且exports到要用的檔案。
+~閱讀容易，且可一眼看出所有的變數有哪些。
+～push上雲端時，code不需要改動。
+
+- 因為```.env```未上傳，所以另外編輯一個```env.example```，告知團隊需要設定哪些環境變數。
+
+
+7. 連接AI API
+- 將連接API的code放在後端，增加安全性。
+- API key直接設定在Heroku的環境變數。
+
+8. 後端以inject語法，將endpoint分類，獨立到分別的檔案中，更清楚明瞭。

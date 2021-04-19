@@ -150,7 +150,7 @@ class App extends Component {
             onRouteChange={this.onRouteChange} />
         </ErrorBoundary>
 
-        {/* route state decide rendering of the page. home, or entryPage(sign in or register) */}
+        {/* route state decides rendering of the page. home, or entryPage(sign in or register) */}
         {
           route === 'home'
             ?
