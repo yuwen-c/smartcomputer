@@ -22,7 +22,7 @@ const EntryPage = ({ route, onRouteChange, loadUserFromServer }) => {
     useEffect(() => {
         fetch('https://immense-river-02070.herokuapp.com/')
         .then(response => response.json())
-        .then(result )
+        .then()
     }, [])
 
     // send data to back end(fetch), create user in tables, refresh user data in App
