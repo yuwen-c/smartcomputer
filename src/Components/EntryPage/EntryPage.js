@@ -22,7 +22,7 @@ const EntryPage = ({ route, onRouteChange, loadUserFromServer }) => {
     // send data to back end(fetch), create user in tables, refresh user data in App
     const onRegister = () => {
         if(name && email && password){
-            fetch('http://localhost:3020/register', {
+            fetch('https://immense-river-02070.herokuapp.com/register', {
                 method: 'post',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify({
@@ -50,7 +50,7 @@ const EntryPage = ({ route, onRouteChange, loadUserFromServer }) => {
 
     const onSignIn = () => {
         if(email && password){
-            fetch('http://localhost:3020/signin', {
+            fetch('https://immense-river-02070.herokuapp.com/signin', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
