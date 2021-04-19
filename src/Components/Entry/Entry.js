@@ -41,20 +41,38 @@ const Entry = ({ route, onRouteChange, loadUserFromServer }) => {
                     setErrorMes(result)
                 }
             })
-            .catch(setErrorMes('failed: registration'))
+            .catch(() => {setErrorMes('failed: registration')})
         }
         else{
             setErrorMes('please fill in the blanks')
         }
-
-
-
     }
 
     const onSignIn = () => {
-        console.log("sign in ")
-
-
+        if(email && password){
+            fetch('http://localhost:3020/signin', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if(result.id){
+                    onRouteChange('home');
+                    loadUserFromServer(result);
+                }
+                else{
+                    setErrorMes(result);
+                }
+            })
+            .catch(() => {setErrorMes('failed: registration')})
+        }
+        else{
+            setErrorMes('please fill in the blanks');
+        }
     }
 
     let pageType = route === 'signIn' ? "Sign In" : "Register"
