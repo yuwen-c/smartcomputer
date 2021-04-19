@@ -6,35 +6,36 @@ import Logo from '../Components/Logo/Logo';
 import UserLogIn from '../Components/UserLogin/UserLogIn';
 import ImgLinkForm from '../Components/ImgLinkForm/ImgLinkForm';
 import FaceRecognition from '../Components/FaceRecognition/FaceRecognition';
-import {ParticlesSetting} from '../Components/ParticlesSetting';
+import { ParticlesSetting } from '../Components/ParticlesSetting';
 import SignIn from '../Components/SignIn/SignIn';
 import Register from '../Components/Register/Register';
+import EntryPage from '../Components/EntryPage/EntryPage';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMesssage';
 import Footer from '../Components/Footer/Footer';
 import ErrorBoundary from '../Components/ErrorBoundary/ErrorBoundary';
 
 const initialState = {
-  input : '',
-  imgUrl : '',
+  input: '',
+  imgUrl: '',
   // add imgurl state so that the image shows after click the button
   // if use input state instead, image shows right after input url
-  faceRegion:{},
-  faceRegions : [], //multiple faces,
+  faceRegion: {},
+  faceRegions: [], //multiple faces,
   route: 'signIn', // 'home', 'register', 'signIn' 
-  isSignedIn: false, 
+  isSignedIn: false,
   errMeg: "",
-  user:{
+  user: {
     id: 0,
-    name:'',
-    email:'',
-    password:'',
-    entries:'',
-    joined:''
+    name: '',
+    email: '',
+    password: '',
+    entries: '',
+    joined: ''
   }
 }
 
-class App extends Component{
-  constructor(){
+class App extends Component {
+  constructor() {
     super();
     this.state = JSON.parse(JSON.stringify(initialState)); // pass by value
     // this.state = initialState; // pass by reference
@@ -42,12 +43,12 @@ class App extends Component{
 
   // detect user input
   onInputChange = (event) => {
-      this.setState({input: event.target.value})
+    this.setState({ input: event.target.value })
   }
 
   // delete url
   onDeleteButton = () => {
-    this.setState({input: ''})
+    this.setState({ input: '' })
   }
 
   // user click to send an url:
@@ -55,49 +56,49 @@ class App extends Component{
   // 2. send fetch to clarifai to do face detection
   // 3. another fetch to increase the entries of user, and get the current entries back.
   onImageClick = () => {
-    if(this.state.input){ //如果有input url才能點送出
+    if (this.state.input) { //如果有input url才能點送出
       this.setState({
-        imgUrl : this.state.input,  // setState to show image on page
+        imgUrl: this.state.input,  // setState to show image on page
         faceRegions: [],        // clear blue face regions of last picture
         errMeg: ""   // reset error Message about none-face picture
-      }); 
-      fetch('https://immense-river-02070.herokuapp.com/imageUrl',{ // fetch with url to clarifai API
+      });
+      fetch('https://immense-river-02070.herokuapp.com/imageUrl', { // fetch with url to clarifai API
         method: 'post',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           input: this.state.input
         })
       })
-      .then(response => response.json())
-      .then(data => {
-        if(data.outputs[0].data.regions){ // if there are faces
-          // call grabFaceFun & pass region data
-          this.grabFaceFun(data);
-          // do increment of entries
-          fetch('https://immense-river-02070.herokuapp.com/image', {
-            method: 'put',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(this.state.user)
-          })
-          .then(response =>response.json())
-          .then(count => {
-            // correct way to change property in nested state.
-            this.setState(prevstate => {
-              let user = Object.assign({}, prevstate.user);
-              user.entries = count[0];
-              return{user: user}
+        .then(response => response.json())
+        .then(data => {
+          if (data.outputs[0].data.regions) { // if there are faces
+            // call grabFaceFun & pass region data
+            this.grabFaceFun(data);
+            // do increment of entries
+            fetch('https://immense-river-02070.herokuapp.com/image', {
+              method: 'put',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(this.state.user)
             })
-          })
-          .catch();           
-        }
-        else{
-          this.setState({errMeg: "no face detected!!"});
-        }
-        this.setState({input : ""});   // set input to blank
-      })
-      .catch((error)=> {
-        this.setState({errMeg: "detection failed!!"})
-      });
+              .then(response => response.json())
+              .then(count => {
+                // correct way to change property in nested state.
+                this.setState(prevstate => {
+                  let user = Object.assign({}, prevstate.user);
+                  user.entries = count[0];
+                  return { user: user }
+                })
+              })
+              .catch();
+          }
+          else {
+            this.setState({ errMeg: "no face detected!!" });
+          }
+          this.setState({ input: "" });   // set input to blank
+        })
+        .catch((error) => {
+          this.setState({ errMeg: "detection failed!!" })
+        });
     }
   }
 
@@ -110,97 +111,89 @@ class App extends Component{
     const imgEle = document.getElementById("imgID"); //get the url image
     const imgHeight = imgEle.height; //height of image
     const imgWidth = imgEle.width; //width of image
-    
+
     const regionArr = regionDatas.map((item, index) => {
       return {
-        top: imgHeight* item.top_row,
-        bottom: imgHeight- (item.bottom_row* imgHeight),
-        left: imgWidth* item.left_col,
-        right: imgWidth- (item.right_col* imgWidth)
+        top: imgHeight * item.top_row,
+        bottom: imgHeight - (item.bottom_row * imgHeight),
+        left: imgWidth * item.left_col,
+        right: imgWidth - (item.right_col * imgWidth)
       }
     })
-    this.setState({faceRegions: regionArr});   
-  }  
-
-  onRouteChange = (route) => {
-    if(route === 'home'){
-      this.setState({isSignedIn: true})
-    } 
-    else if(route === 'signIn'){
-      this.setState(initialState)
-    }
-    this.setState({route: route})
+    this.setState({ faceRegions: regionArr });
   }
 
-  
+  onRouteChange = (route) => {
+    if (route === 'home') {
+      this.setState({ isSignedIn: true })
+    }
+    else if (route === 'signIn') {
+      this.setState(initialState)
+    }
+    this.setState({ route: route })
+  }
+
+
   // load user data to main page.
   loadUserFromServer = (data) => {
-    this.setState({user: data});
-  } 
+    this.setState({ user: data });
+  }
 
-  render(){
-    const {isSignedIn, route, user, input, errMeg, imgUrl, faceRegions} = this.state;
+  render() {
+    const { isSignedIn, route, user, input, errMeg, imgUrl, faceRegions } = this.state;
     return (
       <div className="App flex flex-column vh-100">
         <Particles className='particlesClass'
-        params={ParticlesSetting}
+          params={ParticlesSetting}
         />
         <ErrorBoundary>
           <Navigation
-          isSignedIn={isSignedIn}
-          onRouteChange={this.onRouteChange}/>
+            isSignedIn={isSignedIn}
+            onRouteChange={this.onRouteChange} />
         </ErrorBoundary>
 
-        {/* 3 conditions of route state decide to show what page */}
-          {
-          route === 'home' 
-          ?   
-          <div>
-            <Logo/>
-            <ErrorBoundary>
-            <UserLogIn
-            user={user}/>
-            </ErrorBoundary>
-            <ErrorBoundary>
-            <ImgLinkForm 
-            inputValue={input}
-            onInputChange={this.onInputChange} 
-            onDeleteButton={this.onDeleteButton}
-            onImageClick={this.onImageClick} />
-            </ErrorBoundary>
-            <ErrorMessage
-            errorMessage={errMeg} />
-            <ErrorBoundary>
-            <FaceRecognition
-            img={imgUrl}
-            // PfaceRegion={this.state.faceRegion} // single face version
-            faceRegions={faceRegions}/>
-            </ErrorBoundary>
-          </div>
-            : 
-            route === 'signIn' 
-            ?     
-            <div>  
-              <Logo/>  
+        {/* route state decide rendering of the page. home, or entryPage(sign in or register) */}
+        {
+          route === 'home'
+            ?
+            <div>
+              <Logo />
               <ErrorBoundary>
-                <SignIn 
-                route={route} // send route through props
-                onRouteChange={this.onRouteChange}
-                loadUserFromServer={this.loadUserFromServer}/>
+                <UserLogIn
+                  user={user} />
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <ImgLinkForm
+                  inputValue={input}
+                  onInputChange={this.onInputChange}
+                  onDeleteButton={this.onDeleteButton}
+                  onImageClick={this.onImageClick} />
+              </ErrorBoundary>
+              <ErrorMessage
+                errorMessage={errMeg} />
+              <ErrorBoundary>
+                <FaceRecognition
+                  img={imgUrl}
+                  // faceRegion={this.state.faceRegion} // single face version
+                  faceRegions={faceRegions} />
               </ErrorBoundary>
             </div>
-            : 
-            <div>  
-              <Logo/> 
+
+            :
+
+            <div>
+              <Logo />
               <ErrorBoundary>
-                <Register 
-                route={route} // send route through props
-                onRouteChange={this.onRouteChange}
-                loadUserFromServer={this.loadUserFromServer}/>
+                <EntryPage
+                  route={route} 
+                  onRouteChange={this.onRouteChange}
+                  loadUserFromServer={this.loadUserFromServer}
+                />
               </ErrorBoundary>
             </div>
-        } 
-        <Footer/>
+
+        }
+        <Footer />
       </div>
     )
   }

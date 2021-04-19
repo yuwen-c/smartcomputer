@@ -3,6 +3,10 @@ import FormBase from '../FormBase/FormBase';
 import ErrorMessage from '../ErrorMessage/ErrorMesssage';
 // import './SignIn.css';
 
+
+// import route of App to know sign in or register
+// 有所有的onchange function
+// 有所有的state
 class SignIn extends React.Component{
     constructor(props){
         super(props);
@@ -52,6 +56,9 @@ class SignIn extends React.Component{
         }
     }
  
+    // 不一樣的地方：<legend>
+    // 註冊處，多姓名欄位
+
     render(){
         return (
             <div className="pt4">
@@ -64,6 +71,7 @@ class SignIn extends React.Component{
                         <FormBase
                         route={this.props.route} // get App route to see if it's Reg or Sign
                         setInputState={this.setInputState} // setState function
+                        // email={this.state.email}
                         />
 
                         </fieldset>
