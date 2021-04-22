@@ -7,12 +7,26 @@
 
 
 ## 功能
-- 使用者登入後，送出包含人臉的照片網址，系統可將人臉部分辨識出來，並加以標記。
+
+<div align="center">
+  <img src="example/smartcomputer_usage_200percent_20pad.png" alt="Smartcomputer usage" width="200px" />
+  <br>
+</div>
+
+- 使用者註冊或登入後，送出包含人臉的照片網址，系統可將人臉部分辨識出來，並加以標記。
 - 使用次數會顯示在畫面上，隨著送出網址後即時更新。
+
+## 整體架構
+- 前端與後端相連，傳送及接收資料；後端也與資料庫、Clarifai相接，雙向交換資料。
+
+<div align="center">
+  <img src="example/smartcomputer_structure_200percent_20pad.png" alt="Smartcomputer structure" width="300px" />
+  <br>
+</div>
 
 ## 特點 📝
 ### API 雲端服務
-✨ 連接Clarifai雲端服務的人臉辨識API，將資料回傳前端。
+✨ 連接Clarifai雲端服務的人臉辨識API，並將結果回傳、顯示於前端。
 
 ### 整體架構
 ✨ 前端網站使用React.js。
@@ -61,16 +75,37 @@
 
 
 ## 詳細作法
-@ 登入、註冊、
-@ 前後端 資料連結 圖
 
-1. 註冊，建立新使用者。使用次數預設為0。
+### API 雲端服務
+- 前端將照片URL送往後端，再傳到Clarifai的人臉辨識API，並將辨識結果回傳，再顯示於前端。
 
+<div align="center">
+  <img src="example/smartcomputer_clarafai_200percent_20pad.png" alt="clarifai connection" width="300px" />
+  <br>
+</div>
 
-2. Sign in page, Register page整合成同一個EntryPage
-- 因為這兩頁的樣式、功能有許多雷同，所以整合成一個component，Don't repear yourself。
-- 差異處，用```ternary operator```，根據所在頁面，來判斷要回傳什麼內容。
-- 使用useState和useEffect，用function component就能儲存、改變state，且更簡潔。
+### 註冊、登入
+
+- 註冊及登入，前端、後端及資料庫的連結：
+
+<div align="center">
+  <img src="example/smartcomputer_signIn_register_200percent_20pad.png" alt="clarifai connection" width="600px" />
+  <br>
+</div>
+
+- 註冊時，使用Transaction，在Login及Users表格分別創新使用者。
+- 在Login表格儲存加密密碼。
+
+### 註冊、登入頁面整合為一個component
+
+<div align="center">
+  <img src="example/smartcomputer_entryPage_200percent_20pad.png" alt="entrPage chart" width="400px" />
+  <br>
+</div>
+
+- 這兩頁的樣式、功能有許多雷同，所以整合成一個component，Don't repeat yourself。
+- 差異處，用```ternary operator```，根據從```App.js```傳來的```Route```，來判斷要回傳什麼內容。
+- 使用```useState```和```useEffect```，以function component就能儲存、改變state，且更簡潔。
 
 3. 送出網址部分
 - 使用者貼上網址，觸發input state改變。
