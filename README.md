@@ -89,3 +89,74 @@
 </h2>
 
 ## How was Smartcomputer built?
+
+### API cloud service
+- The URL is sent from front-end to back-end, then to Clarifai face detection API. 
+- The detection result is sending back from Clarafai and showing on screen.
+
+<div align="center">
+  <img src="example/smartcomputer_clarafai_200percent_20pad.png" alt="clarifai connection" width="300px" />
+  <br>
+</div>
+
+### Register, Sign In
+
+- Connections between front-end, back-end and database in register step and sign in step. 
+
+<div align="center">
+  <img src="example/smartcomputer_signIn_register_200percent_20pad.png" alt="clarifai connection" width="600px" />
+  <br>
+</div>
+
+- Creating new user in both Login and Users tables with transaction in registration step.
+- Stroing hashed password in Login table.
+
+### Merging Registration and Sign In pages to a single component
+- Since the two pages are quite similar, merge two component to one, don't repear yourself.
+
+<div align="center">
+  <img src="example/smartcomputer_entryPage_200percent_20pad.png" alt="entrPage chart" width="400px" />
+  <br>
+</div>
+
+- For those differences, rendering content based on ```Route``` state from ```App.js```.
+- The component is built by function component using ```useState``` and ```useEffect```, clearer syntax.
+
+### Rendering is controlled by states
+
+<div align="center">
+  <img src="example/smartcomputer_route_render_200percent_20pad.png" alt="states deside rendering chart" width="400px" />
+  <br>
+</div>
+
+- Rendering nav bar according to ```isSignIn``` state.
+- Rendering page according to ```route```.
+
+
+### Increment on counts/ entries
+
+<div align="center">
+  <img src="example/smartcomputer_countIncrement_200percent_pad20.png" alt="entrPage chart" width="400px" />
+  <br>
+</div>
+
+- After Clarifai returning the detection, if there are faces, increment function is triggered and go to database to add 1 times to this user.
+- After that, it will return to the front-end and display the updated entries of user on the screen. 
+
+
+### environment variables [Back-end](https://github.com/yuwen-c/smartcomputerAPI)
+
+<div align="center">
+  <img src="example/smartcomputer_env_200percent_20pad.png" alt="environment variables chart" width="400px" />
+  <br>
+</div>
+
+- 在```.env```檔設定API key，並且加入```gitignore```以免被git追蹤。
+- 以```config.js```檔為環境變數命名```process.env```，並且export。
+- 另外編輯一個```env.example```，告知團隊需要設定哪些環境變數。
+- 生產階段，API key直接設定在Heroku上。
+
+### 後端server endpoint 各自獨立為一個檔案
+- 配合 dependency injection，將各endpoint分類，獨立到分別的檔案中，更清楚明瞭。
+
+

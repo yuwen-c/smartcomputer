@@ -107,13 +107,13 @@
 - 在Login表格儲存加密密碼。
 
 ### 註冊、登入頁面整合為一個component
-
+- 這兩頁的樣式、功能有許多雷同，所以整合成一個component，Don't repeat yourself。
+  
 <div align="center">
   <img src="example/smartcomputer_entryPage_200percent_20pad.png" alt="entrPage chart" width="400px" />
   <br>
 </div>
 
-- 這兩頁的樣式、功能有許多雷同，所以整合成一個component，Don't repeat yourself。
 - 差異處，用```ternary operator```，根據從```App.js```傳來的```Route```，來判斷要回傳什麼內容。
 - 使用```useState```和```useEffect```，以function component就能儲存、改變state，且更簡潔。
 
