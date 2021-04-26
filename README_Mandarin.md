@@ -1,10 +1,18 @@
-# Smart Computer - AI 人臉偵測系統
+# Smart Computer - AI 人臉偵測系統 👦 👧
 
 ## [README in English](https://github.com/yuwen-c/smartcomputer/blob/master/README.md)
+
 ## 上傳照片網址，即可辨識出人臉的部分，並加以標記。
 ## 串接Clarifai提供的AI人臉辨識API
-## 🔆 [實際操作網站](https://yuwen-smartcomputer.netlify.app/)
 
+## 🔆 [實際操作網站](https://yuwen-smartcomputer.netlify.app/)
+## [後端server介紹](https://github.com/yuwen-c/smartcomputerAPI)
+
+
+<h2 align="center">
+  <img src="example/smart-computer_screenshot.png" alt="screenshot" width="700px" />
+  <br>
+</h2>
 
 ## 功能
 
@@ -131,7 +139,7 @@
 - 如果有人臉資料，則前端會再連到後端，將使用次數+1，後端、資料庫完成+1後會回到前端，並在螢幕上顯示更新後的使用次數。
 
 
-### 環境變數設定 後端[放連結] 
+### 環境變數設定 [後端](https://github.com/yuwen-c/smartcomputerAPI)
 
 <div align="center">
   <img src="example/smartcomputer_env_200percent_20pad.png" alt="environment variables chart" width="400px" />
