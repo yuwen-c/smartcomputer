@@ -144,19 +144,22 @@
 - After that, it will return to the front-end and display the updated entries of user on the screen. 
 
 
-### environment variables [Back-end](https://github.com/yuwen-c/smartcomputerAPI)
+### environment variables in [Back-end](https://github.com/yuwen-c/smartcomputerAPI)
 
 <div align="center">
   <img src="example/smartcomputer_env_200percent_20pad.png" alt="environment variables chart" width="400px" />
   <br>
 </div>
 
-- 在```.env```檔設定API key，並且加入```gitignore```以免被git追蹤。
-- 以```config.js```檔為環境變數命名```process.env```，並且export。
-- 另外編輯一個```env.example```，告知團隊需要設定哪些環境變數。
-- 生產階段，API key直接設定在Heroku上。
+- Storing API key in ```.env``` and add it to ```gitignore``` to keep this file from being tracked.
+- Naming environment variables in ```config.js``` and export.
+- Adding another ```env.example``` as reference for the team.
+- In production stage, set API key on Heroku.
+- 
 
-### 後端server endpoint 各自獨立為一個檔案
-- 配合 dependency injection，將各endpoint分類，獨立到分別的檔案中，更清楚明瞭。
+### Divide endpoints on back-end server to separate files
+
+- Classifying endpoints, and dividing them to separate files with dependency injection, making it clearer.
+
 
 
