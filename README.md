@@ -1,6 +1,6 @@
 # Smart Computer - AI Face Detection 👦 👧
 
-### [中文版README](https://github.com/yuwen-c/dieta/blob/master/README_Mandarin.md)
+### [中文版README](https://github.com/yuwen-c/smartcomputer/blob/master/README_Mandarin.md)
 
 ### Detecting faces by simply sending a photo.
 ### AI detection technique using Clarifai API.
