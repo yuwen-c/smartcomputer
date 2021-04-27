@@ -1,12 +1,12 @@
 # Smart Computer - AI 人臉偵測系統 👦 👧
 
-## [README in English](https://github.com/yuwen-c/smartcomputer/blob/master/README.md)
+### [README in English](https://github.com/yuwen-c/smartcomputer/blob/master/README.md)
 
-## 上傳照片網址，即可辨識出人臉的部分，並加以標記。
-## 串接Clarifai提供的AI人臉辨識API
+### 上傳照片網址，即可辨識出人臉的部分，並加以標記。
+### 串接Clarifai提供的AI人臉辨識API
 
-## 🔆 [實際操作網站](https://yuwen-smartcomputer.netlify.app/)
-## [後端server介紹](https://github.com/yuwen-c/smartcomputerAPI)
+### 🔆 [實際操作網站](https://yuwen-smartcomputer.netlify.app/)
+
 
 
 <h2 align="center">
@@ -26,8 +26,9 @@
 
 ## 整體架構
 - 前端與後端相連，傳送及接收資料；後端也與資料庫、Clarifai相接，雙向交換資料。
-
+- [後端server github](https://github.com/yuwen-c/smartcomputerAPI)
 <div align="center">
+
   <img src="example/smartcomputer_structure_200percent_20pad.png" alt="Smartcomputer structure" width="300px" />
   <br>
 </div>
@@ -37,34 +38,34 @@
 ✨ 連接Clarifai雲端服務的人臉辨識API，並將結果回傳、顯示於前端。
 
 ### 整體架構
-✨ 前端網站使用React.js。
-－語法類似Javascript，利用多個元件組合而成，元件各自獨立且可重複使用。
-✨ [後端server](https://github.com/yuwen-c/smartcomputerAPI)利用node.js, express.js。
-－使用Javascript語言，效能強大，可快速建造一個server。 
-✨ 前後端以RestfulAPI連接。
-－提高可讀性、除錯效率，分離每個端點，可彈性組合成多種邏輯。
-✨ 使用者資料儲存於PostgreSQL資料庫。
-✨ 資料庫與server以knex相接。
+✨ 前端網站使用React.js。\
+－語法類似Javascript，利用多個元件組合而成，元件各自獨立且可重複使用。\
+✨ [後端server](https://github.com/yuwen-c/smartcomputerAPI)利用node.js, express.js。\
+－使用Javascript語言，效能強大，可快速建造一個server。\ 
+✨ 前後端以RestfulAPI連接。\
+－提高可讀性、除錯效率，分離每個端點，可彈性組合成多種邏輯。\
+✨ 使用者資料儲存於PostgreSQL資料庫。\
+✨ 資料庫與server以knex相接。\
 －說明文件清楚，功能強大。
 
 ### 安全性 
-🔐 將Clarifai API key 設為環境變數，與後端server的code分開，並放在```gitignore```，不會被git紀錄。
-🔐 Clarifai API key 部署時設定在Heroku。
-🔐 使用者密碼以Bcrypt加密。
-🔐 使用者密碼，與姓名等資料分開存放在不同table，減少資料外洩的機率。
-🔐 開發階段，使用```dotenv```。
+🔐 將Clarifai API key 設為環境變數，與後端server的code分開，並放在```gitignore```，不會被git紀錄。\
+🔐 Clarifai API key 部署時設定在Heroku。\
+🔐 使用者密碼以Bcrypt加密。\
+🔐 使用者密碼，與姓名等資料分開存放在不同table，減少資料外洩的機率。\
+🔐 開發階段，使用```dotenv```。\
 －方便將機密資料與code分開存放。
 
 ### 響應式前端網站及特效
-✨ 手機、桌機體驗良好的前端網站。
-✨ 利用Tachyons設定達成：針對不同螢幕大小，顯示不同樣式的設計。
-✨ 動態背景採用```react-particles-js```
+✨ 手機、桌機體驗良好的前端網站。\
+✨ 利用Tachyons設定達成：針對不同螢幕大小，顯示不同樣式的設計。\
+✨ 動態背景採用```react-particles-js```\
 ✨ Hover特效採用```react-tilt```
 
 ### 部署
-✨ 前端網站部署到Netlify。
-－適合部署前端網站，不需等待喚醒時間。 
-✨ 後端網站部署到Heroku。
+✨ 前端網站部署到Netlify。\
+－適合部署前端網站，不需等待喚醒時間。 \
+✨ 後端網站部署到Heroku。\
 －維護、操作容易，適合小流量網站。
 
 ## 畫面預覽
