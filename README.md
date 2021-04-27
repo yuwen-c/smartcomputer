@@ -51,7 +51,7 @@
 －Clear documentation. Powerful.
 
 ### Security
-🔐 Seperating Clarifai API key from back-end server code and by storing it as environment variable. Also, registering it in ```gitignore``` to prevent tracing.\
+🔐 Seperating Clarifai API key from back-end server code and by storing it as environment variable. Also, registering it in ```gitignore``` to prevent being tracking.\
 🔐 Clarifai API key setting on Heroku after deployment.\
 🔐 Hash user's password with Bcrypt.\
 🔐 Storing password and name to seperate tables, reduce change of data leakage.\

@@ -41,7 +41,7 @@
 ✨ 前端網站使用React.js。\
 －語法類似Javascript，利用多個元件組合而成，元件各自獨立且可重複使用。\
 ✨ [後端server](https://github.com/yuwen-c/smartcomputerAPI)利用node.js, express.js。\
-－使用Javascript語言，效能強大，可快速建造一個server。\ 
+－使用Javascript語言，效能強大，可快速建造一個server。\
 ✨ 前後端以RestfulAPI連接。\
 －提高可讀性、除錯效率，分離每個端點，可彈性組合成多種邏輯。\
 ✨ 使用者資料儲存於PostgreSQL資料庫。\
@@ -64,7 +64,7 @@
 
 ### 部署
 ✨ 前端網站部署到Netlify。\
-－適合部署前端網站，不需等待喚醒時間。 \
+－適合部署前端網站，不需等待喚醒時間。\
 ✨ 後端網站部署到Heroku。\
 －維護、操作容易，適合小流量網站。
 
