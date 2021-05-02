@@ -3,7 +3,7 @@
 ### [README in English](https://github.com/yuwen-c/smartcomputer/blob/master/README.md)
 
 ### 上傳照片網址，即可辨識出人臉的部分，並加以標記。
-### 串接Clarifai提供的AI人臉辨識API
+### 串接Clarifai提供的AI人臉辨識API。
 
 ### 🔆 [實際操作網站](https://yuwen-smartcomputer.netlify.app/)
 
