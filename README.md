@@ -45,7 +45,7 @@
 ✨ [Back-end server](https://github.com/yuwen-c/smartcomputerAPI) using node.js, express.js.\
 －Based on Javascript and powerful, can build a server quickly.\
 ✨ Connecting front-end and back-end with RestfulAPI.\
-－Higer readability, easy to debug. Every endpoint is seperated and can be combined into multiple logics with flexibility.\
+－Higher readability, easy to debug. Every endpoint is seperated and can be combined into multiple logics with flexibility.\
 ✨ Saving user data in PostgreSQL.\
 ✨ Connecting database with server using knex.\
 －Clear documentation. Powerful.
@@ -60,7 +60,7 @@
 
 ### Responsive website and Special effects
 ✨ Good user experience on both mobile and desktop.\
-✨ Different layout on mobile and desktop using Tachyons.\
+✨ Different layouts on mobile and desktop using Tachyons.\
 ✨ Dynamic background using ```react-particles-js```.\
 ✨ Hover effect using ```react-tilt```.
 
@@ -111,14 +111,14 @@
 - Stroing hashed password in Login table.
 
 ### Merging Registration and Sign In pages to a single component
-- Since the two pages are quite similar, merge two component to one, don't repear yourself.
+- Since the two pages are quite similar, merge two components to one, don't repear yourself.
 
 <div align="center">
   <img src="example/smartcomputer_entryPage_200percent_20pad.png" alt="entrPage chart" width="400px" />
   <br>
 </div>
 
-- For those differences, rendering content based on ```Route``` state from ```App.js```.
+- Rendering different contents based on ```Route``` state from ```App.js```: The registration page has a name blanket which does not exist in sign in page. Also the two buttons are named differently.
 - The component is built by function component using ```useState``` and ```useEffect```, clearer syntax.
 
 ### Rendering is controlled by states
@@ -151,14 +151,14 @@
 </div>
 
 - Storing API key in ```.env``` and add it to ```gitignore``` to keep this file from being tracked.
-- Naming environment variables in ```config.js``` and export.
+- Naming environment variables in ```config.js``` and exporting it.
 - Adding another ```env.example``` as reference for the team.
 - In production stage, set API key on Heroku.
-- 
+
 
 ### Divide endpoints on back-end server to separate files
 
-- Classifying endpoints, and dividing them to separate files with dependency injection, making it clearer.
+- Classifying endpoints, and dividing them to separate files with ```dependency injection``` syntax, making it clearer.
 
 
 
