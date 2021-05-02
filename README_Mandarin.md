@@ -115,7 +115,7 @@
   <br>
 </div>
 
-- 差異處，用```ternary operator```，根據從```App.js```傳來的```Route```，來判斷要回傳什麼內容。
+- 差異處，用```ternary operator```，根據從```App.js```傳來的```Route```，來判斷要回傳什麼內容：註冊頁面比登入頁面多「姓名欄位」，且一個是登入按鈕，另一個是註冊按鈕。
 - 使用```useState```和```useEffect```，以function component就能儲存、改變state，且更簡潔。
 
 ### 路徑與登入狀態決定畫面呈現
@@ -140,7 +140,7 @@
 - 如果有人臉資料，則前端會再連到後端，將使用次數+1，後端、資料庫完成+1後會回到前端，並在螢幕上顯示更新後的使用次數。
 
 
-### 環境變數設定 [後端](https://github.com/yuwen-c/smartcomputerAPI)
+### [後端](https://github.com/yuwen-c/smartcomputerAPI)的環境變數設定 
 
 <div align="center">
   <img src="example/smartcomputer_env_200percent_20pad.png" alt="environment variables chart" width="400px" />
